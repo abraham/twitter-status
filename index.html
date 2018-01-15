@@ -1,0 +1,45 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>twitter-status demos</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="icon" href="https://nutmeg.tools/favicon.png">
+
+  <script src="./node_modules/@webcomponents/webcomponentsjs/webcomponents-sd-ce.js"></script>
+
+  <!-- Use `npm run serve` to start a development server. -->
+
+  <style>
+    body {
+      background-color: #eee;
+      padding: 24px;
+    }
+
+    twitter-status {
+      margin: 8px;
+    }
+
+    twitter-status.blue {
+      --twitter-status-background-color: #03A9F4;
+    }
+  </style>
+</head>
+<body>
+  <twitter-status></twitter-status>
+
+  <twitter-status></twitter-status>
+
+  <twitter-status>Slot content</twitter-status>
+
+  <twitter-status class="blue"></twitter-status>
+
+  <script>
+    /** Set complex properties */
+    // document.querySelector('<twitter-status>').status = Status;
+
+  </script>
+
+  <!-- In development `twitter-status.bundled.js` will automatically be loaded. -->
+</body>
+</html>

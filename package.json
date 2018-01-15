@@ -1,0 +1,39 @@
+{
+  "name": "twitter-status",
+  "version": "0.1.0",
+  "description": "Generated Nutmeg Web Component",
+  "main": "dist/twitter-status.js",
+  "module": "dist/twitter-status.js",
+  "unpkg": "dist/twitter-status.min.js",
+  "types": "dist/twitter-status.d.ts",
+  "directories": {
+    "test": "test"
+  },
+  "engines": {
+    "node": ">=8.0.0"
+  },
+  "keywords": [
+    "twitter-status",
+    "nutmeg"
+  ],
+  "license": "MIT",
+  "scripts": {
+    "build": "npx nutmeg build .",
+    "build:production": "npx nutmeg build . --production",
+    "prebuild": "npx nutmeg clean .",
+    "prepare": "npm run build:production",
+    "pretest": "npm run build",
+    "serve": "npx nutmeg serve .",
+    "test": "npx nutmeg test .",
+    "watch": "npx nutmeg watch ."
+  },
+  "dependencies": {
+    "@nutmeg/seed": "0.4.1"
+  },
+  "devDependencies": {
+    "@nutmeg/cli": "0.9.2",
+    "@types/chai": "4.1.0",
+    "@types/mocha": "2.2.46",
+    "@webcomponents/webcomponentsjs": "1.0.22"
+  }
+}
