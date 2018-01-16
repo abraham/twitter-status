@@ -60,7 +60,7 @@ export class TwitterStatus extends Seed {
         }
 
         #container {
-          background-color: #FAFAFA;
+          background-color: #fff;
         }
 
         #content {
