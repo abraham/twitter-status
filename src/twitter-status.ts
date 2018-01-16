@@ -1,9 +1,9 @@
 import { autoLink, AutoLinkOptions, htmlEscape, UrlEntity } from 'twitter-text';
 import { Seed, Property, html, TemplateResult } from '@nutmeg/seed';
+import { svg, render } from 'lit-html';
 import { unsafeHTML } from 'lit-html/lib/unsafe-html';
 
 import { Status } from './status';
-import { svg, render } from 'lit-html';
 import { User } from './user';
 
 export class TwitterStatus extends Seed {
