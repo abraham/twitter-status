@@ -1,7 +1,7 @@
 {
   "name": "twitter-status",
   "version": "0.1.0",
-  "description": "Generated Nutmeg Web Component",
+  "description": "Twitter Status Web Component",
   "main": "dist/twitter-status.js",
   "module": "dist/twitter-status.js",
   "unpkg": "dist/twitter-status.min.js",
@@ -9,14 +9,25 @@
   "directories": {
     "test": "test"
   },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/abraham/twitter-status.git"
+  },
   "engines": {
     "node": ">=8.0.0"
   },
   "keywords": [
     "twitter-status",
+    "tweet",
+    "twitter",
+    "web-component",
     "nutmeg"
   ],
   "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/abraham/twitter-status/issues"
+  },
+  "homepage": "https://github.com/abraham/twitter-status",
   "scripts": {
     "build": "npx nutmeg build .",
     "build:production": "npx nutmeg build . --production",
@@ -28,12 +39,14 @@
     "watch": "npx nutmeg watch ."
   },
   "dependencies": {
-    "@nutmeg/seed": "0.4.1"
+    "@nutmeg/seed": "^0.4.2",
+    "twitter-text": "^2.0.2"
   },
   "devDependencies": {
-    "@nutmeg/cli": "0.9.2",
+    "@nutmeg/cli": "0.9.3",
     "@types/chai": "4.1.0",
     "@types/mocha": "2.2.46",
+    "@types/twitter-text": "^2.0.0",
     "@webcomponents/webcomponentsjs": "1.0.22"
   }
 }

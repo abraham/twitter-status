@@ -10,64 +10,87 @@ describe('<twitter-status>', () => {
     });
 
     it('renders default', () => {
-      expect(component.$('.content').innerText).to.include('Welcome to <twitter-status>');
+      expect(component.$('#content').innerText).to.include('Loading...');
     });
   });
 
-  
-  describe('status', () => {
-    beforeEach(() => {
-      component = fixture('<twitter-status></twitter-status>');      /** Set typical complex property. */
-      // component.status = Status
+  describe('simple status', () => {
+    beforeEach(async () => {
+      component = fixture('<twitter-status></twitter-status>');
+      let res = await fetch('./base/test/simple.json');
+      component.status = await res.json();
     });
 
-    it('is rendered', () => {
-      // expect(component.$('.content').innerText).to.include('status: ');
+    it('renders name', () => {
+      expect(component.$('#header').innerText.trim()).to.eq('jack \n@jack');
+    });
+
+    it('renders verified badge', () => {
+      expect(component.$('#header svg.verified').getAttribute('class')).to.include('verified'); // Firefox ShadowDOM pollyfil adds additional classes
+    });
+
+    it('renders text', () => {
+      expect(component.$('#text').innerText.trim()).to.eq('just setting up my twttr');
+    });
+
+    it('renders date', () => {
+      expect(component.$('#link').innerText).to.eq('21 Mar 2006');
+    });
+
+    it('renders profile image', () => {
+      expect(component.$('#profile-image img').getAttribute('src')).to.include('https://pbs.twimg.com/profile_images/839863609345794048/mkpdB9Tf_normal.jpg');
+    });
+
+    it('has action links', () => {
+      expect(component.$$('#actions a')[0].getAttribute('href')).to.include('https://twitter.com/intent/tweet?in_reply_to=20');
+      expect(component.$$('#actions a')[1].getAttribute('href')).to.include('https://twitter.com/intent/retweet?tweet_id=20');
+      expect(component.$$('#actions a')[2].getAttribute('href')).to.include('https://twitter.com/intent/like?tweet_id=20');
+    });
+
+    it('links to tweet', () => {
+      expect(component.$('#logo a').getAttribute('href')).to.include('https://twitter.com/jack/status/20');
     });
   });
 
-
-  describe('slot', () => {
-    beforeEach(() => {
-      component = fixture('<twitter-status>slot content</twitter-status>');
+  describe('complex status', () => {
+    beforeEach(async () => {
+      component = fixture('<twitter-status></twitter-status>');
+      let res = await fetch('./base/test/complex.json');
+      component.status = await res.json();
     });
 
-    it('is rendered', () => {
-      // Firefox has different output so testing for inclusion instead of exact match.
-      expect(component.$('slot').assignedNodes()[0].wholeText).to.include('slot content');
-      // TODO: Switch to simpler test when Firefox is no longer polyfilled.
-      // expect(component.innerText).equal('slot content');
+    it('autoLinks username', () => {
+      expect(component.$$('#text a')[0].innerText).to.eq('travisci');
+      expect(component.$$('#text a')[0].getAttribute('href')).to.eq('https://twitter.com/travisci');
+      expect(component.$$('#text a')[0].getAttribute('class')).to.include('tweet-url username'); // Firefox ShadowDOM pollyfil adds additional classes
+    });
+
+    it('autoLinks list', () => {
+      expect(component.$$('#text a')[1].innerText).to.eq('nutmeg/cli');
+      expect(component.$$('#text a')[1].getAttribute('href')).to.eq('https://twitter.com/nutmeg/cli');
+      expect(component.$$('#text a')[1].getAttribute('class')).to.include('tweet-url list-slug'); // Firefox ShadowDOM pollyfil adds additional classes
+    });
+
+    it('autoLinks url', () => {
+      expect(component.$$('#text a')[2].innerText.replace(/\s/g,'')).to.eq('https://nutmeg.tools');
+      expect(component.$$('#text a')[2].getAttribute('href')).to.eq('https://t.co/jWglafR6nl');
     });
   });
 
-  describe('--twitter-status-background-color', () => {
-    describe('with default', () => {
-      beforeEach(() => {
-        component = fixture('<twitter-status></twitter-status>');
-      });
-
-      it('is set', () => {
-        expect(getComputedStyle(component.$('.content')).backgroundColor).equal('rgb(250, 250, 250)');
-      });
+  describe('image status', () => {
+    beforeEach(async () => {
+      component = fixture('<twitter-status></twitter-status>');
+      let res = await fetch('./base/test/image.json');
+      component.status = await res.json();
     });
 
-    describe('with outside value', () => {
-      beforeEach(() => {
-        component = fixture(`
-          <div>
-            <style>
-              twitter-status.blue {
-                --twitter-status-background-color: #03A9F4;
-              }
-            </style>
-            <twitter-status class="blue"></twitter-status>
-          </div>
-        `).querySelector('twitter-status');
-      });
+    it('renders an image', () => {
+      expect(component.$('#media img').getAttribute('src')).to.eq('https://pbs.twimg.com/media/Bm54nBCCYAACwBi.jpg');
+    });
 
-      it('is set', () => {
-        expect(getComputedStyle(component.$('.content')).backgroundColor).equal('rgb(3, 169, 244)');
-      });
+    it('autoLinks hashtag', () => {
+      expect(component.$$('#text a')[1].getAttribute('href')).to.eq('https://twitter.com/search?q=%23nature');
+      expect(component.$$('#text a')[1].getAttribute('class')).to.include('tweet-url hashtag'); // Firefox ShadowDOM pollyfil adds additional classes
     });
   });
 });

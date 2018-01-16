@@ -19,25 +19,32 @@
     twitter-status {
       margin: 8px;
     }
-
-    twitter-status.blue {
-      --twitter-status-background-color: #03A9F4;
-    }
   </style>
 </head>
 <body>
-  <twitter-status></twitter-status>
+  <twitter-status id="simple"></twitter-status>
 
-  <twitter-status></twitter-status>
+  <twitter-status id="complex"></twitter-status>
 
-  <twitter-status>Slot content</twitter-status>
-
-  <twitter-status class="blue"></twitter-status>
+  <twitter-status id="image"></twitter-status>
 
   <script>
-    /** Set complex properties */
-    // document.querySelector('<twitter-status>').status = Status;
-
+    fetch('test/simple.json')
+      .then(res => res.json())
+      .then(status => {
+        console.log('first set');
+        document.querySelector('#simple').status = status;
+      });
+    fetch('test/complex.json')
+      .then(res => res.json())
+      .then(status => {
+        document.querySelector('#complex').status = status;
+      });
+    fetch('test/image.json')
+      .then(res => res.json())
+      .then(status => {
+        document.querySelector('#image').status = status;
+      });
   </script>
 
   <!-- In development `twitter-status.bundled.js` will automatically be loaded. -->

@@ -1,6 +1,14 @@
 &lt;twitter-status&gt;
 ====
 
+Twitter Status Web Component
+
+Examples
+----
+
+![Example](/images/simple.png)
+![Example with image](/images/image.png)
+
 Install
 ----
 
@@ -19,16 +27,16 @@ Loading this component. It would be a good idea to use a specific version instea
 Usage
 ----
 
+Status must be the full response of [GET statuses/show/:id](https://developer.twitter.com/en/docs/tweets/post-and-engage/api-reference/get-statuses-show-id) with `include_entities=true` and `tweet_mode=extended`.
+
 ```
 <twitter-status></twitter-status>
 
-<twitter-status></twitter-status>
-
-<twitter-status>Slot content</twitter-status>
+<twitter-status status="{\"id_str\":\"20\",...}"></twitter-status>
 ```
 
 ```
-document.querySelector('<twitter-status>').status = Status;
+document.querySelector('<twitter-status>').status = { "id_str": "20", ... };
 
 ```
 

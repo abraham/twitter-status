@@ -1,0 +1,117 @@
+{
+  "created_at": "Sun Dec 10 18:39:59 +0000 2017",
+  "id": 939927692643917824,
+  "id_str": "939927692643917824",
+  "full_text": "Version 0.2.0 of Nutmeg for building, testing, and publishing Web Components is live.\n\nNew features include:\n- FirefoxHeadless enabled by default\n- Uglified min.js output\n- Source maps\n- @travisci support\n\nInstall today with `npm install -g @nutmeg/cli`\n\nhttps://t.co/jWglafR6nl",
+  "truncated": false,
+  "display_text_range": [
+    0,
+    278
+  ],
+  "entities": {
+    "hashtags": [],
+    "symbols": [],
+    "user_mentions": [
+      {
+        "screen_name": "travisci",
+        "name": "Travis CI",
+        "id": 252481460,
+        "id_str": "252481460",
+        "indices": [
+          187,
+          196
+        ]
+      }
+    ],
+    "urls": [
+      {
+        "url": "https://t.co/jWglafR6nl",
+        "expanded_url": "https://nutmeg.tools",
+        "display_url": "nutmeg.tools",
+        "indices": [
+          255,
+          278
+        ]
+      }
+    ]
+  },
+  "source": "<a href=\"http://twitter.com\" rel=\"nofollow\">Twitter Web Client</a>",
+  "in_reply_to_status_id": null,
+  "in_reply_to_status_id_str": null,
+  "in_reply_to_user_id": null,
+  "in_reply_to_user_id_str": null,
+  "in_reply_to_screen_name": null,
+  "user": {
+    "id": 9436992,
+    "id_str": "9436992",
+    "name": "Abraham Williams",
+    "screen_name": "abraham",
+    "location": "Madison, WI",
+    "description": "Developer and caffeine consumer at @Bendyworks, #WebTechnologies @GoogleDevExpert, international speaker, @GDGMadison organizer, writer of code",
+    "url": "https://t.co/ck29y8mOBT",
+    "entities": {
+      "url": {
+        "urls": [
+          {
+            "url": "https://t.co/ck29y8mOBT",
+            "expanded_url": "https://abrah.am/",
+            "display_url": "abrah.am",
+            "indices": [
+              0,
+              23
+            ]
+          }
+        ]
+      },
+      "description": {
+        "urls": []
+      }
+    },
+    "protected": false,
+    "followers_count": 8144,
+    "friends_count": 397,
+    "listed_count": 582,
+    "created_at": "Sun Oct 14 12:50:47 +0000 2007",
+    "favourites_count": 15366,
+    "utc_offset": -28800,
+    "time_zone": "Pacific Time (US & Canada)",
+    "geo_enabled": false,
+    "verified": false,
+    "statuses_count": 44451,
+    "lang": "en",
+    "contributors_enabled": false,
+    "is_translator": false,
+    "is_translation_enabled": false,
+    "profile_background_color": "FFFFFF",
+    "profile_background_image_url": "http://pbs.twimg.com/profile_background_images/729249839/f94e1a2a25a84262f1de849a15a58e3d.png",
+    "profile_background_image_url_https": "https://pbs.twimg.com/profile_background_images/729249839/f94e1a2a25a84262f1de849a15a58e3d.png",
+    "profile_background_tile": false,
+    "profile_image_url": "http://pbs.twimg.com/profile_images/897079141719195648/_mvh-QJH_normal.jpg",
+    "profile_image_url_https": "https://pbs.twimg.com/profile_images/897079141719195648/_mvh-QJH_normal.jpg",
+    "profile_banner_url": "https://pbs.twimg.com/profile_banners/9436992/1490189391",
+    "profile_link_color": "38AFFF",
+    "profile_sidebar_border_color": "FFFFFF",
+    "profile_sidebar_fill_color": "FFFFFF",
+    "profile_text_color": "454545",
+    "profile_use_background_image": false,
+    "has_extended_profile": true,
+    "default_profile": false,
+    "default_profile_image": false,
+    "following": false,
+    "follow_request_sent": false,
+    "notifications": false,
+    "translator_type": "regular"
+  },
+  "geo": null,
+  "coordinates": null,
+  "place": null,
+  "contributors": null,
+  "is_quote_status": false,
+  "retweet_count": 2,
+  "favorite_count": 12,
+  "favorited": false,
+  "retweeted": false,
+  "possibly_sensitive": false,
+  "possibly_sensitive_appealable": false,
+  "lang": "en"
+}
