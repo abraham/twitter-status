@@ -12,6 +12,8 @@ Twitter Status Web Component
 Examples
 ----
 
+[Live demo](https://codepen.io/abrahamwilliams/pen/eyLLWy)
+
 ![Example](/images/simple.png)
 ![Example with image](/images/image.png)
 
