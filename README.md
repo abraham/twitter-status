@@ -1,6 +1,12 @@
 &lt;twitter-status&gt;
 ====
 
+[![Version Status](https://img.shields.io/npm/v/@nutmeg/cli.svg?style=flat&label=version&colorB=4bc524)](https://npmjs.com/package/@nutmeg/cli)
+[![macOS Build Status](https://img.shields.io/circleci/project/github/abraham/twitter-status.svg?style=flat&label=macos)](https://circleci.com/gh/abraham/twitter-status)
+[![Linux Build Status](https://img.shields.io/travis/abraham/twitter-status.svg?style=flat&label=linux)](https://travis-ci.org/abraham/twitter-status)
+[![Windows Build Status](https://img.shields.io/appveyor/ci/abraham/twitter-status.svg?style=flat&label=windows)](https://ci.appveyor.com/project/abraham/twitter-status)
+[![Dependency Status](https://david-dm.org/abraham/twitter-status.svg?style=flat)](https://david-dm.org/abraham/twitter-status)
+
 Twitter Status Web Component
 
 Examples
