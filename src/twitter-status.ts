@@ -3,11 +3,11 @@ import { Seed, Property, html, TemplateResult } from '@nutmeg/seed';
 import { svg, render } from 'lit-html';
 import { unsafeHTML } from 'lit-html/lib/unsafe-html';
 
-import { Status } from './status';
+import { Status, StatusData } from './status';
 import { User } from './user';
 
 export class TwitterStatus extends Seed {
-  @Property() public status: Status;
+  @Property() public status: StatusData;
 
   private readonly months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
   private _status_cache: Status;

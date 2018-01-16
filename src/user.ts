@@ -1,9 +1,9 @@
 import { Entities } from './entities';
 
 export class User {
-  private _data: User;
+  private _data: UserData;
 
-  constructor(user: User) {
+  constructor(user: UserData) {
     this._data = user;
   }
 
@@ -32,7 +32,7 @@ export class User {
   }
 }
 
-export interface User {
+export interface UserData {
   contributors: number[] | null,
   contributors_enabled: boolean,
   created_at: string,

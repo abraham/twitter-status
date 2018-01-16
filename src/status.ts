@@ -1,13 +1,17 @@
 import { Entities } from './entities';
-import { User } from './user';
+import { User, UserData } from './user';
 
 export class Status {
-  private _data: Status;
+  private _data: StatusData;
   private _user: User;
 
-  constructor(status: Status) {
+  constructor(status: StatusData) {
     this._user = new User(status.user);
     this._data = status;
+  }
+
+  public get id_str(): string {
+    return this._data.id_str;
   }
 
   public get user(): User {
@@ -51,7 +55,7 @@ export class Status {
   }
 }
 
-export interface Status {
+export interface StatusData {
   contributors: null,
   coordinates: null,
   created_at: string,
@@ -77,5 +81,5 @@ export interface Status {
   retweeted: boolean,
   source: string,
   truncated: boolean,
-  user: User,
+  user: UserData,
 }
