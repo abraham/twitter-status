@@ -46,7 +46,7 @@
     "@nutmeg/cli": "0.9.3",
     "@types/chai": "4.1.0",
     "@types/mocha": "2.2.46",
-    "@types/twitter-text": "^2.0.0",
+    "@types/twitter-text": "2.0.0",
     "@webcomponents/webcomponentsjs": "1.0.22"
   }
 }
