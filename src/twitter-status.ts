@@ -134,13 +134,13 @@ export class TwitterStatus extends Seed {
         }
 
         a {
-          color: var(--link-color);
+          color: ${this.linkColor};
           text-decoration: none;
           outline: 0;
         }
 
         a:visited {
-          color: var(--link-color);
+          color: ${this.linkColor};
           text-decoration: none;
           outline: 0;
         }
@@ -170,6 +170,10 @@ export class TwitterStatus extends Seed {
         ${this._status ? this.statusTemplate : this.loadingTemplate}
       </div>
     `;
+  }
+
+  private get linkColor(): string {
+    return this._user ? this._user.primaryColor : '#1c94e0';
   }
 
   private get timestamp() {

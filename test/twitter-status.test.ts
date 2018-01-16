@@ -37,6 +37,10 @@ describe('<twitter-status>', () => {
       expect(component.$('#link').innerText).to.eq('21 Mar 2006');
     });
 
+    it('renders links with user color', () => {
+      expect(getComputedStyle(component.$('#link a')).color).to.eq('rgb(153, 0, 0)');
+    });
+
     it('renders profile image', () => {
       expect(component.$('#profile-image img').getAttribute('src')).to.include('https://pbs.twimg.com/profile_images/839863609345794048/mkpdB9Tf_normal.jpg');
     });
