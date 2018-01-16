@@ -44,7 +44,7 @@ Status must be the full response of [GET statuses/show/:id](https://developer.tw
 ```
 
 ```
-document.querySelector('<twitter-status>').status = { "id_str": "20", ... };
+document.querySelector('twitter-status').status = { "id_str": "20", ... };
 
 ```
 
