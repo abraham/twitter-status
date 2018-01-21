@@ -48,6 +48,11 @@ document.querySelector('twitter-status').status = { "id_str": "20", ... };
 
 ```
 
+&lt;twitter-user&gt;
+----
+
+Looking for a way to embed users? Check out [&lt;twitter-user&gt;](https://github.com/abraham/twitter-user).
+
 License
 ----
 
