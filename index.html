@@ -32,7 +32,6 @@
     fetch('test/simple.json')
       .then(res => res.json())
       .then(status => {
-        console.log('first set');
         document.querySelector('#simple').status = status;
       });
     fetch('test/complex.json')
