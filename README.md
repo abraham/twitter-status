@@ -58,4 +58,6 @@ License
 
 TwitterStatus is released under an MIT license.
 
+TwitterStatus is not affiliated Twitter, Inc.
+
 Built, tested, and published with [Nutmeg](https://nutmeg.tools).
