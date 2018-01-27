@@ -30,9 +30,8 @@
   "homepage": "https://github.com/abraham/twitter-status",
   "scripts": {
     "build": "npx nutmeg build .",
-    "build:production": "npx nutmeg build . --production",
     "prebuild": "npx nutmeg clean .",
-    "prepare": "npm run build:production",
+    "prepare": "npm run build -- --production",
     "pretest": "npm run build",
     "serve": "npx nutmeg serve .",
     "test": "npx nutmeg test .",
