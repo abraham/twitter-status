@@ -178,7 +178,7 @@ export class TwitterStatus extends Seed {
 
   private get timestamp() {
     const date = this._status.createdAt;
-    const month = this.months[date.getMonth()]
+    const month = this.months[date.getMonth()];
     return `${date.getDate()} ${month} ${date.getFullYear()}`;
   }
 
