@@ -38,7 +38,7 @@
     "watch": "npx nutmeg watch ."
   },
   "dependencies": {
-    "@nutmeg/seed": "^0.6.0",
+    "@nutmeg/seed": "^0.7.0",
     "twitter-text": "^2.0.2"
   },
   "devDependencies": {
