@@ -106,6 +106,7 @@ export class TwitterStatus extends Seed {
           font-size: 27px;
           line-height: 32px;
           letter-spacing: .01em;
+          overflow-wrap: break-word;
         }
 
         #footer {
