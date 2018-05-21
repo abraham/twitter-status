@@ -43,7 +43,7 @@
     "twitter-text": "2.0.4"
   },
   "devDependencies": {
-    "@nutmeg/cli": "0.13.0",
+    "@nutmeg/cli": "0.14.0",
     "@types/twitter-text": "2.0.0"
   }
 }
