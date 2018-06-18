@@ -42,6 +42,10 @@ describe('<twitter-status>', () => {
       expect(getComputedStyle(component.$('#link a')).color).to.eq('rgb(153, 0, 0)');
     });
 
+    it('renders border with user color', () => {
+      expect(getComputedStyle(component).borderColor).to.eq('rgb(153, 0, 0)');
+    });
+
     it('renders profile image', () => {
       expect(component.$('#profile-image img').getAttribute('src')).to.include('https://pbs.twimg.com/profile_images/839863609345794048/mkpdB9Tf_normal.jpg');
     });

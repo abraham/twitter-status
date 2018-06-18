@@ -6,10 +6,10 @@ import { Status, StatusData } from './status';
 import { User } from './user';
 
 export class TwitterStatus extends Seed {
-  @Property() public status: StatusData;
+  @Property() public status!: StatusData;
 
   private readonly months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
-  private _status_cache: Status;
+  private _status_cache!: Status;
 
   constructor() {
     super();
@@ -51,7 +51,10 @@ export class TwitterStatus extends Seed {
     return html`
       <style>
         :host {
-          box-shadow: 0 3px 1px -2px rgba(0, 0, 0, .2), 0 2px 2px 0 rgba(0, 0 ,0, .14), 0 1px 5px 0 rgba(0, 0, 0, .12);
+          --twitter-status-link-color: #1c94e0;
+          border: 1px solid var(--twitter-status-link-color);
+          border-radius: 8px;
+          overflow: hidden;
         }
 
         * {
@@ -76,6 +79,10 @@ export class TwitterStatus extends Seed {
           height: 48px;
         }
 
+        #names {
+          overflow: hidden;
+        }
+
         #name {
           overflow: hidden;
           text-overflow: ellipsis;
@@ -88,6 +95,9 @@ export class TwitterStatus extends Seed {
 
         #media img {
           width: 100%;
+          max-height: 400px;
+          object-fit: cover;
+          object-position: center;
         }
 
         #header {
@@ -97,6 +107,7 @@ export class TwitterStatus extends Seed {
 
         #header-content {
           display: flex;
+          overflow: hidden;
         }
 
         #text {
@@ -134,13 +145,13 @@ export class TwitterStatus extends Seed {
         }
 
         a {
-          color: ${this.linkColor};
+          color: var(--twitter-status-link-color);
           text-decoration: none;
           outline: 0;
         }
 
         a:visited {
-          color: ${this.linkColor};
+          color: var(--twitter-status-link-color);
           text-decoration: none;
           outline: 0;
         }
@@ -165,6 +176,7 @@ export class TwitterStatus extends Seed {
 
   /** HTML Template for the component. */
   public get template(): TemplateResult {
+    this.setLinkColor();
     return html`
       <div id="container">
         ${this._status ? this.statusTemplate : this.loadingTemplate}
@@ -172,8 +184,8 @@ export class TwitterStatus extends Seed {
     `;
   }
 
-  private get linkColor(): string {
-    return this._user ? this._user.primaryColor : '#1c94e0';
+  private setLinkColor() {
+    this.style.setProperty('--twitter-status-link-color', this._user ? this._user.primaryColor : '#1c94e0');
   }
 
   private get timestamp() {
