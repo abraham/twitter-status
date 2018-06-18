@@ -34,6 +34,10 @@ describe('<twitter-status>', () => {
       expect(component.$('#text').innerText.trim()).to.eq('just setting up my twttr');
     });
 
+    it('renders text as short', () => {
+      expect(component.$('#text.short')).to.exist;
+    });
+
     it('renders date', () => {
       expect(component.$('#link').innerText).to.eq('21 Mar 2006');
     });
@@ -83,6 +87,10 @@ describe('<twitter-status>', () => {
     it('autoLinks url', () => {
       expect(component.$$('#text a')[2].innerText.replace(/\s/g,'')).to.eq('https://nutmeg.tools');
       expect(component.$$('#text a')[2].getAttribute('href')).to.eq('https://t.co/jWglafR6nl');
+    });
+
+    it('renders text as tall', () => {
+      expect(component.$('#text.short')).to.not.exist;
     });
   });
 
