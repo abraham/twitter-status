@@ -9,7 +9,6 @@ export class TwitterStatus extends Seed {
   @Property() public status!: StatusData;
 
   private readonly months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
-  private _status_cache!: Status;
 
   constructor() {
     super();
@@ -20,10 +19,11 @@ export class TwitterStatus extends Seed {
   }
 
   private get _status(): Status {
-    if (this.status && (!this._status_cache || this._status_cache.id_str !== this.status.id_str)) {
-      this._status_cache = new Status(this.status);
-    }
-    return this._status_cache;
+    return this.status && new Status(this.status);
+  }
+
+  private get _retweet(): Status | undefined {
+    return this._status.retweet;
   }
 
   /** The component instance has been inserted into the DOM. */
@@ -63,6 +63,23 @@ export class TwitterStatus extends Seed {
 
         #container {
           background-color: #fff;
+        }
+
+        #retweet {
+          font-size: 0.75em;
+          padding: 0 0 8px 44px;
+          color: #657786;
+        }
+
+        #retweet a {
+          color: #657786;
+        }
+
+        #retweet svg {
+          width: 14px;
+          height: 14px;
+          vertical-align: middle;
+          margin-bottom: 2px;
         }
 
         #content {
@@ -261,6 +278,18 @@ export class TwitterStatus extends Seed {
     `;
   }
 
+  private get retweetTemplate(): TemplateResult {
+    if (!this._retweet) { return html``; }
+    return html`
+      <div id="retweet">
+        ${this.retweetIcon}
+        <a href="${this._retweet.user.url}" target="_blank">
+          ${this._retweet.user.name}
+        </a> Retweeted
+      </div>
+    `;
+  }
+
   private get textTemplate(): TemplateResult {
     return html`
       <div id="text" class$="${this.textClass}">
@@ -288,6 +317,7 @@ export class TwitterStatus extends Seed {
     return html`
       ${this.mediaTemplate}
       <div id="content">
+        ${this.retweetTemplate}
         ${this.headerTemplate}
         ${this.textTemplate}
         ${this.footerTemplate}

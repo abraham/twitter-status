@@ -110,6 +110,19 @@ describe('<twitter-status>', () => {
       expect(component.$$('#text a')[1].getAttribute('class')).to.include('tweet-url hashtag'); // Firefox ShadowDOM pollyfil adds additional classes
     });
   });
+
+  describe('retweet status', () => {
+    beforeEach(async () => {
+      component = fixture('<twitter-status></twitter-status>');
+      let res = await fetch('./base/test/retweet.json');
+      component.status = await res.json();
+    });
+
+    it('renders retweet text', () => {
+      expect(component.$('#retweet').innerText.trim()).to.eq('Abraham Williams Retweeted');
+      expect(component.$('#retweet a').getAttribute('href')).to.eq('https://twitter.com/abraham');
+    });
+  });
 });
 
 function fixture(tag: string): HTMLElement {
