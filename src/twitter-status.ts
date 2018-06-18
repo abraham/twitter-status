@@ -222,8 +222,10 @@ export class TwitterStatus extends Seed {
   private get autoLinkOptions(): AutoLinkOptions {
     return {
       targetBlank: true,
-      urlEntities: this._status.entities.urls as UrlEntity[]
-    };
+      urlEntities: this._status.entities.urls as UrlEntity[],
+      suppressNoFollow: true,
+      rel: 'noopener',
+    } as AutoLinkOptions; // AutoLinkOptions doesn't know about rel at the root level.
   }
 
   private get unsafeLinkedText() {
@@ -258,7 +260,7 @@ export class TwitterStatus extends Seed {
     if (!this._status.hasMedia) { return html``; }
     return html`
       <div id="media">
-        <img src="${this._status.mediaUrl}" />
+        <img src="${this._status.mediaUrl}" alt="media embeded in tweet" />
       </div>
     `;
   }
@@ -266,14 +268,14 @@ export class TwitterStatus extends Seed {
   private get headerTemplate(): TemplateResult {
     return html`
       <div id="header">
-        <a id="header-content" href="${this._user.url}" target="_blank">
-          <span id="profile-image"><img src="${this._user.profileImageUrl}" /></span>
+        <a id="header-content" href="${this._user.url}" target="_blank" rel="noopener">
+          <span id="profile-image"><img src="${this._user.profileImageUrl}" alt="${this._user.screen_name}'s avatar'"/></span>
           <span id="names">
             <span id="name">${this._user.name} ${this.verifiedBadge}</span>
             <span>@${this._user.screen_name}</span>
           </span>
         </a>
-        <div id="logo"><a href="${this._status.url}" target="_blank">${this.logoTemplate}</a></div>
+        <div id="logo"><a href="${this._status.url}" target="_blank" rel="noopener">${this.logoTemplate}</a></div>
       </div>
     `;
   }
@@ -283,7 +285,7 @@ export class TwitterStatus extends Seed {
     return html`
       <div id="retweet">
         ${this.retweetIcon}
-        <a href="${this._retweet.user.url}" target="_blank">
+        <a href="${this._retweet.user.url}" target="_blank" rel="noopener">
           ${this._retweet.user.name}
         </a> Retweeted
       </div>
@@ -302,12 +304,12 @@ export class TwitterStatus extends Seed {
     return html`
       <div id="footer">
         <div id="actions">
-          <a href="${this._status.replyUrl}" target="_blank">${this.replyIcon}</a>
-          <a href="${this._status.retweetUrl}" target="_blank">${this.retweetIcon}</a>
-          <a href="${this._status.likeUrl}" target="_blank">${this.likeIcon}</a>
+          <a href="${this._status.replyUrl}" target="_blank" rel="noopener" title="reply">${this.replyIcon}</a>
+          <a href="${this._status.retweetUrl}" target="_blank" rel="noopener" title="retweet">${this.retweetIcon}</a>
+          <a href="${this._status.likeUrl}" target="_blank" rel="noopener" title="like">${this.likeIcon}</a>
         </div>
         <div id="link">
-          <a href="${this._status.url}" target="_blank">${this.timestamp}</a>
+          <a href="${this._status.url}" target="_blank" rel="noopener">${this.timestamp}</a>
         </div>
       </div>
     `;
