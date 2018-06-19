@@ -14,8 +14,17 @@ Examples
 
 [Live demo](https://codepen.io/abrahamwilliams/pen/eyLLWy)
 
+Base example
+
 ![Example](/images/simple.png)
+
+Example with attached image
+
 ![Example with image](/images/image.png)
+
+Example with hyperlinked hashtags/mentions/URLs and links colored from profile settings.
+
+![Example with image](/images/colors.png)
 
 Install
 ----
@@ -50,6 +59,25 @@ document.querySelector('twitter-status').status = { "id_str": "20", ... };
 
 &lt;twitter-user&gt;
 ----
+
+Theme
+----
+
+You can theme the borders. Here is an card example.
+
+```
+<style>
+  twitter-status.card {
+    box-shadow: 0 3px 4px 1px rgba(0, 0, 0, .08), 0 1px 1px 1px rgba(0, 0, 0, .05);
+    border-radius: 2px;
+    border-width: 0;
+  }
+</style>
+<twitter-status class="card" status="{\"id_str\":\"20\",...}"></twitter-status>
+```
+
+![Example with card edges](/images/card.png)
+
 
 Looking for a way to embed users? Check out [&lt;twitter-user&gt;](https://github.com/abraham/twitter-user).
 
