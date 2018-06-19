@@ -28,6 +28,8 @@
 
   <twitter-status id="image"></twitter-status>
 
+  <twitter-status id="retweet"></twitter-status>
+
   <script>
     fetch('test/simple.json')
       .then(res => res.json())
@@ -43,6 +45,11 @@
       .then(res => res.json())
       .then(status => {
         document.querySelector('#image').status = status;
+      });
+    fetch('test/retweet.json')
+      .then(res => res.json())
+      .then(status => {
+        document.querySelector('#retweet').status = status;
       });
   </script>
 

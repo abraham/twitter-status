@@ -1,11 +1,20 @@
-import { Entities } from './entities';
 import { User, UserData } from './user';
 
+import { Entities } from './entities';
+
 export class Status {
+  public retweet?: Status;
   private _data: StatusData;
   private _user: User;
 
-  constructor(status: StatusData) {
+  constructor(parent: StatusData) {
+    let status = { ...parent };
+    if (status.retweeted_status) {
+      let retweet = status;
+      status = { ...status.retweeted_status };
+      delete retweet.retweeted_status;
+      this.retweet = new Status(retweet);
+    }
     this._user = new User(status.user);
     this._data = status;
   }
@@ -82,4 +91,5 @@ export interface StatusData {
   source: string,
   truncated: boolean,
   user: UserData,
+  retweeted_status?: StatusData;
 }

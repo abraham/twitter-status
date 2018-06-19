@@ -34,12 +34,20 @@ describe('<twitter-status>', () => {
       expect(component.$('#text').innerText.trim()).to.eq('just setting up my twttr');
     });
 
+    it('renders text as short', () => {
+      expect(component.$('#text.short')).to.exist;
+    });
+
     it('renders date', () => {
       expect(component.$('#link').innerText).to.eq('21 Mar 2006');
     });
 
     it('renders links with user color', () => {
       expect(getComputedStyle(component.$('#link a')).color).to.eq('rgb(153, 0, 0)');
+    });
+
+    it('renders border with user color', () => {
+      expect(getComputedStyle(component).borderColor).to.eq('rgb(153, 0, 0)');
     });
 
     it('renders profile image', () => {
@@ -80,6 +88,10 @@ describe('<twitter-status>', () => {
       expect(component.$$('#text a')[2].innerText.replace(/\s/g,'')).to.eq('https://nutmeg.tools');
       expect(component.$$('#text a')[2].getAttribute('href')).to.eq('https://t.co/jWglafR6nl');
     });
+
+    it('renders text as tall', () => {
+      expect(component.$('#text.short')).to.not.exist;
+    });
   });
 
   describe('image status', () => {
@@ -96,6 +108,19 @@ describe('<twitter-status>', () => {
     it('autoLinks hashtag', () => {
       expect(component.$$('#text a')[1].getAttribute('href')).to.eq('https://twitter.com/search?q=%23nature');
       expect(component.$$('#text a')[1].getAttribute('class')).to.include('tweet-url hashtag'); // Firefox ShadowDOM pollyfil adds additional classes
+    });
+  });
+
+  describe('retweet status', () => {
+    beforeEach(async () => {
+      component = fixture('<twitter-status></twitter-status>');
+      let res = await fetch('./base/test/retweet.json');
+      component.status = await res.json();
+    });
+
+    it('renders retweet text', () => {
+      expect(component.$('#retweet').innerText.trim()).to.eq('Abraham Williams Retweeted');
+      expect(component.$('#retweet a').getAttribute('href')).to.eq('https://twitter.com/abraham');
     });
   });
 });

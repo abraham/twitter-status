@@ -6,10 +6,9 @@ import { Status, StatusData } from './status';
 import { User } from './user';
 
 export class TwitterStatus extends Seed {
-  @Property() public status: StatusData;
+  @Property() public status!: StatusData;
 
   private readonly months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
-  private _status_cache: Status;
 
   constructor() {
     super();
@@ -20,10 +19,11 @@ export class TwitterStatus extends Seed {
   }
 
   private get _status(): Status {
-    if (this.status && (!this._status_cache || this._status_cache.id_str !== this.status.id_str)) {
-      this._status_cache = new Status(this.status);
-    }
-    return this._status_cache;
+    return this.status && new Status(this.status);
+  }
+
+  private get _retweet(): Status | undefined {
+    return this._status.retweet;
   }
 
   /** The component instance has been inserted into the DOM. */
@@ -51,7 +51,10 @@ export class TwitterStatus extends Seed {
     return html`
       <style>
         :host {
-          box-shadow: 0 3px 1px -2px rgba(0, 0, 0, .2), 0 2px 2px 0 rgba(0, 0 ,0, .14), 0 1px 5px 0 rgba(0, 0, 0, .12);
+          --twitter-status-link-color: #1c94e0;
+          border: 1px solid var(--twitter-status-link-color);
+          border-radius: 8px;
+          overflow: hidden;
         }
 
         * {
@@ -60,6 +63,23 @@ export class TwitterStatus extends Seed {
 
         #container {
           background-color: #fff;
+        }
+
+        #retweet {
+          font-size: 0.75em;
+          padding: 0 0 8px 44px;
+          color: #657786;
+        }
+
+        #retweet a {
+          color: #657786;
+        }
+
+        #retweet svg {
+          width: 14px;
+          height: 14px;
+          vertical-align: middle;
+          margin-bottom: 2px;
         }
 
         #content {
@@ -76,6 +96,10 @@ export class TwitterStatus extends Seed {
           height: 48px;
         }
 
+        #names {
+          overflow: hidden;
+        }
+
         #name {
           overflow: hidden;
           text-overflow: ellipsis;
@@ -88,6 +112,9 @@ export class TwitterStatus extends Seed {
 
         #media img {
           width: 100%;
+          max-height: 400px;
+          object-fit: cover;
+          object-position: center;
         }
 
         #header {
@@ -97,16 +124,21 @@ export class TwitterStatus extends Seed {
 
         #header-content {
           display: flex;
+          overflow: hidden;
         }
 
         #text {
           white-space: pre-line;
           margin-top: -16px;
           margin-bottom: 24px;
-          font-size: 27px;
+          font-size: 1.5em;
           line-height: 32px;
           letter-spacing: .01em;
           overflow-wrap: break-word;
+        }
+
+        #text.short {
+          font-size: 2em;
         }
 
         #footer {
@@ -134,13 +166,13 @@ export class TwitterStatus extends Seed {
         }
 
         a {
-          color: ${this.linkColor};
+          color: var(--twitter-status-link-color);
           text-decoration: none;
           outline: 0;
         }
 
         a:visited {
-          color: ${this.linkColor};
+          color: var(--twitter-status-link-color);
           text-decoration: none;
           outline: 0;
         }
@@ -165,6 +197,7 @@ export class TwitterStatus extends Seed {
 
   /** HTML Template for the component. */
   public get template(): TemplateResult {
+    this.setLinkColor();
     return html`
       <div id="container">
         ${this._status ? this.statusTemplate : this.loadingTemplate}
@@ -172,8 +205,8 @@ export class TwitterStatus extends Seed {
     `;
   }
 
-  private get linkColor(): string {
-    return this._user ? this._user.primaryColor : '#1c94e0';
+  private setLinkColor() {
+    this.style.setProperty('--twitter-status-link-color', this._user ? this._user.primaryColor : '#1c94e0');
   }
 
   private get timestamp() {
@@ -189,12 +222,18 @@ export class TwitterStatus extends Seed {
   private get autoLinkOptions(): AutoLinkOptions {
     return {
       targetBlank: true,
-      urlEntities: this._status.entities.urls as UrlEntity[]
-    };
+      urlEntities: this._status.entities.urls as UrlEntity[],
+      suppressNoFollow: true,
+      rel: 'noopener',
+    } as AutoLinkOptions; // AutoLinkOptions doesn't know about rel at the root level.
   }
 
   private get unsafeLinkedText() {
     return unsafeHTML(autoLink(htmlEscape(this._status.text), this.autoLinkOptions));
+  }
+
+  private get textClass(): string {
+    return this._status.text.length < 100 ? 'short' : '';
   }
 
   private get logoTemplate(): TemplateResult {
@@ -221,7 +260,7 @@ export class TwitterStatus extends Seed {
     if (!this._status.hasMedia) { return html``; }
     return html`
       <div id="media">
-        <img src="${this._status.mediaUrl}" />
+        <img src="${this._status.mediaUrl}" alt="media embeded in tweet" />
       </div>
     `;
   }
@@ -229,21 +268,33 @@ export class TwitterStatus extends Seed {
   private get headerTemplate(): TemplateResult {
     return html`
       <div id="header">
-        <a id="header-content" href="${this._user.url}" target="_blank">
-          <span id="profile-image"><img src="${this._user.profileImageUrl}" /></span>
+        <a id="header-content" href="${this._user.url}" target="_blank" rel="noopener">
+          <span id="profile-image"><img src="${this._user.profileImageUrl}" alt="${this._user.screen_name}'s avatar'"/></span>
           <span id="names">
             <span id="name">${this._user.name} ${this.verifiedBadge}</span>
             <span>@${this._user.screen_name}</span>
           </span>
         </a>
-        <div id="logo"><a href="${this._status.url}" target="_blank">${this.logoTemplate}</a></div>
+        <div id="logo"><a href="${this._status.url}" target="_blank" rel="noopener">${this.logoTemplate}</a></div>
+      </div>
+    `;
+  }
+
+  private get retweetTemplate(): TemplateResult {
+    if (!this._retweet) { return html``; }
+    return html`
+      <div id="retweet">
+        ${this.retweetIcon}
+        <a href="${this._retweet.user.url}" target="_blank" rel="noopener">
+          ${this._retweet.user.name}
+        </a> Retweeted
       </div>
     `;
   }
 
   private get textTemplate(): TemplateResult {
     return html`
-      <div id="text">
+      <div id="text" class$="${this.textClass}">
         ${this.unsafeLinkedText}
       </div>
     `;
@@ -253,12 +304,12 @@ export class TwitterStatus extends Seed {
     return html`
       <div id="footer">
         <div id="actions">
-          <a href="${this._status.replyUrl}" target="_blank">${this.replyIcon}</a>
-          <a href="${this._status.retweetUrl}" target="_blank">${this.retweetIcon}</a>
-          <a href="${this._status.likeUrl}" target="_blank">${this.likeIcon}</a>
+          <a href="${this._status.replyUrl}" target="_blank" rel="noopener" title="reply">${this.replyIcon}</a>
+          <a href="${this._status.retweetUrl}" target="_blank" rel="noopener" title="retweet">${this.retweetIcon}</a>
+          <a href="${this._status.likeUrl}" target="_blank" rel="noopener" title="like">${this.likeIcon}</a>
         </div>
         <div id="link">
-          <a href="${this._status.url}" target="_blank">${this.timestamp}</a>
+          <a href="${this._status.url}" target="_blank" rel="noopener">${this.timestamp}</a>
         </div>
       </div>
     `;
@@ -268,6 +319,7 @@ export class TwitterStatus extends Seed {
     return html`
       ${this.mediaTemplate}
       <div id="content">
+        ${this.retweetTemplate}
         ${this.headerTemplate}
         ${this.textTemplate}
         ${this.footerTemplate}
