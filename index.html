@@ -12,12 +12,18 @@
 
   <style>
     body {
-      background-color: #eee;
+      background-color: #fff;
       padding: 24px;
     }
 
     twitter-status {
       margin: 8px;
+    }
+
+    twitter-status.card {
+      box-shadow: 0 3px 4px 1px rgba(0, 0, 0, .08), 0 1px 1px 1px rgba(0, 0, 0, .05);
+      border-radius: 2px;
+      border-width: 0;
     }
   </style>
 </head>
@@ -28,7 +34,7 @@
 
   <twitter-status id="image"></twitter-status>
 
-  <twitter-status id="retweet"></twitter-status>
+  <twitter-status id="retweet" class="card"></twitter-status>
 
   <script>
     fetch('test/simple.json')

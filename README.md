@@ -14,8 +14,17 @@ Examples
 
 [Live demo](https://codepen.io/abrahamwilliams/pen/eyLLWy)
 
+Base example
+
 ![Example](/images/simple.png)
+
+Example with attached image
+
 ![Example with image](/images/image.png)
+
+Example with hyperlinked hashtags/mentions/URLs and links colored from profile settings.
+
+![Example with image](/images/colors.png)
 
 Install
 ----
@@ -23,7 +32,7 @@ Install
 Polyfill tags if you need them. This will include ShadowDOM and Custom Elements support.
 
 ```
-<script src="https://unpkg.com/@webcomponents/webcomponentsjs@latest/webcomponents-sd-ce.js"></script>
+<script src="https://unpkg.com/@webcomponents/webcomponentsjs@latest/bundles/webcomponents-sd-ce.js"></script>
 ```
 
 Loading this component. It would be a good idea to use a specific version instead of `latest`.
@@ -50,6 +59,25 @@ document.querySelector('twitter-status').status = { "id_str": "20", ... };
 
 &lt;twitter-user&gt;
 ----
+
+Theme
+----
+
+You can theme the borders. Here is an card example.
+
+```
+<style>
+  twitter-status.card {
+    box-shadow: 0 3px 4px 1px rgba(0, 0, 0, .08), 0 1px 1px 1px rgba(0, 0, 0, .05);
+    border-radius: 2px;
+    border-width: 0;
+  }
+</style>
+<twitter-status class="card" status="{\"id_str\":\"20\",...}"></twitter-status>
+```
+
+![Example with card edges](/images/card.png)
+
 
 Looking for a way to embed users? Check out [&lt;twitter-user&gt;](https://github.com/abraham/twitter-user).
 
