@@ -12,7 +12,7 @@ Twitter Status Web Component
 Examples
 ----
 
-[Live demo](https://codepen.io/abrahamwilliams/pen/eyLLWy)
+[Live demo](https://codepen.io/abraham/pen/eyLLWy)
 
 Base example
 
