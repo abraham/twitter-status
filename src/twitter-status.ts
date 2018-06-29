@@ -1,17 +1,18 @@
-import { autoLink, AutoLinkOptions, htmlEscape, UrlEntity } from 'twitter-text';
-import { Seed, Property, html, svg, TemplateResult } from '@nutmeg/seed';
+import { html, Property, Seed, svg, TemplateResult } from '@nutmeg/seed';
 import { unsafeHTML } from 'lit-html/lib/unsafe-html';
-
+import { autoLink, AutoLinkOptions, htmlEscape, UrlEntity } from 'twitter-text';
+import { Events } from './events';
 import { Status, StatusData } from './status';
 import { User } from './user';
+
+const eventTarget = new Events().target;
 
 export class TwitterStatus extends Seed {
   @Property() public status!: StatusData;
 
-  private readonly months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
-
   constructor() {
     super();
+    eventTarget.addEventListener('timestamp', () => this.render());
   }
 
   private get _user(): User {
@@ -209,10 +210,8 @@ export class TwitterStatus extends Seed {
     this.style.setProperty('--twitter-status-link-color', this._user ? this._user.primaryColor : '#1c94e0');
   }
 
-  private get timestamp() {
-    const date = this._status.createdAt;
-    const month = this.months[date.getMonth()];
-    return `${date.getDate()} ${month} ${date.getFullYear()}`;
+  private get timestamp(): string {
+    return this._status.relativeCreatedAt;
   }
 
   private get verifiedBadge() {
