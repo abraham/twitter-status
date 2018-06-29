@@ -1,7 +1,7 @@
 import { html, Property, Seed, svg, TemplateResult } from '@nutmeg/seed';
 import { unsafeHTML } from 'lit-html/lib/unsafe-html';
 import { autoLink, AutoLinkOptions, htmlEscape, UrlEntity } from 'twitter-text';
-import { Events } from './events';
+import { Events, EVENT_NAME } from './events';
 import { Status, StatusData } from './status';
 import { User } from './user';
 
@@ -12,7 +12,7 @@ export class TwitterStatus extends Seed {
 
   constructor() {
     super();
-    eventTarget.addEventListener('timestamp', () => this.render());
+    eventTarget.addEventListener(EVENT_NAME, () => this.render());
   }
 
   private get _user(): User {

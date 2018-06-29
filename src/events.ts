@@ -1,6 +1,8 @@
+export const EVENT_NAME = 'timestamp';
+
 export class Events {
-  public target = new EventTarget();
-  private timestampEvent = new CustomEvent('timestamp');
+  public target = document.createElement('div');
+  private event = new Event(EVENT_NAME);
   private FIFTEEN_SECONDS = 15 * 1000;
 
   constructor() {
@@ -13,6 +15,6 @@ export class Events {
   }
 
   private dispatch() {
-    this.target.dispatchEvent(this.timestampEvent);
+    this.target.dispatchEvent(this.event);
   }
 }
