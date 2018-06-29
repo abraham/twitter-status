@@ -1,6 +1,7 @@
 import 'mocha';
 import { expect } from 'chai';
 import * as sinon from 'sinon';
+import * as moment from 'moment';
 
 describe('<twitter-status>', () => {
   let component;
@@ -123,7 +124,67 @@ describe('<twitter-status>', () => {
       expect(component.$('#retweet a').getAttribute('href')).to.eq('https://twitter.com/abraham');
     });
   });
+
+  describe('relative timestamp', () => {
+    describe('15 seconds ago', () => {
+      beforeEach(async () => {
+        component = fixture('<twitter-status></twitter-status>');
+        let res = await fetch('./base/test/simple.json');
+        let status = await res.json();
+        component.status = { ...status, created_at: formatDate(Date.now() - 15 * 1000) };
+      });
+
+      it('renders date', () => {
+        expect(['15s', '16s'].includes(component.$('#link').innerText)).to.be.true;
+      });
+    });
+
+    describe('15 minutes ago', () => {
+      beforeEach(async () => {
+        component = fixture('<twitter-status></twitter-status>');
+        let res = await fetch('./base/test/simple.json');
+        let status = await res.json();
+        component.status = { ...status, created_at: formatDate(Date.now() - 15 * 60 * 1000) };
+      });
+
+      it('renders date', () => {
+        expect(component.$('#link').innerText).to.eq('15m');
+      });
+    });
+
+    describe('15 hours ago', () => {
+      beforeEach(async () => {
+        component = fixture('<twitter-status></twitter-status>');
+        let res = await fetch('./base/test/simple.json');
+        let status = await res.json();
+        component.status = { ...(status), created_at: formatDate(Date.now() - 15 * 60 * 60 * 1000) };
+      });
+
+      it('renders date', () => {
+        expect(component.$('#link').innerText).to.eq('15h');
+      });
+    });
+
+    describe('15 days ago', () => {
+      const date = Date.now() - 15 * 60 * 60 * 24 * 1000;
+
+      beforeEach(async () => {
+        component = fixture('<twitter-status></twitter-status>');
+        let res = await fetch('./base/test/simple.json');
+        let status = await res.json();
+        component.status = { ...status, created_at: formatDate(date) };
+      });
+
+      it('renders date', () => {
+        expect(component.$('#link').innerText).to.eq(moment(date).format('D MMM'));
+      });
+    });
+  });
 });
+
+function formatDate(date: number) {
+  return moment(date).format('dd MMM DD HH:mm:ss ZZ YYYY');
+}
 
 function fixture(tag: string): HTMLElement {
   function fixtureContainer(): HTMLElement {

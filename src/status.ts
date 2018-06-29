@@ -1,6 +1,10 @@
+import { Entities } from './entities';
 import { User, UserData } from './user';
 
-import { Entities } from './entities';
+const MINUTE_SECONDS = 60;
+const HOUR_SECONDS = 3600;
+const DAY_SECONDS = 86400;
+const MONTHS = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
 
 export class Status {
   public retweet?: Status;
@@ -51,6 +55,10 @@ export class Status {
     return new Date(Date.parse(this._data.created_at));
   }
 
+  public get relativeCreatedAt(): string {
+    return this.relativeDate(this.createdAt);
+  }
+
   public get replyUrl(): string {
     return `https://twitter.com/intent/tweet?in_reply_to=${this._data.id_str}`
   }
@@ -61,6 +69,33 @@ export class Status {
 
   public get likeUrl(): string {
     return `https://twitter.com/intent/like?tweet_id=${this._data.id_str}`
+  }
+
+  private relativeDate(date: Date): string {
+    const now = new Date();
+    const delta = (now.getTime() - date.getTime()) / 1000;
+
+    if (delta <= 604800) {
+      return this.shortForm(delta);
+    } else {
+      const day = date.getDate();
+      const month = MONTHS[date.getMonth()];
+      const year = date.getFullYear() == now.getFullYear() ? '' :  ` ${date.getFullYear()}`;
+      return `${day} ${month}${year}`;
+    }
+  }
+
+  private shortForm(delta: number): string {
+    if (delta < MINUTE_SECONDS) {
+      return `${Math.round(delta)}s`;
+    }
+    if (delta < HOUR_SECONDS) {
+      return `${Math.round(delta / MINUTE_SECONDS)}m`;
+    }
+    if (delta < DAY_SECONDS) {
+      return `${Math.round(delta / HOUR_SECONDS)}h`;
+    }
+    return `${Math.round(delta / DAY_SECONDS)}d`;
   }
 }
 
