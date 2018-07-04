@@ -125,6 +125,18 @@ describe('<twitter-status>', () => {
     });
   });
 
+  describe('html in text', () => {
+    beforeEach(async () => {
+      component = fixture('<twitter-status></twitter-status>');
+      let res = await fetch('./base/test/script.json');
+      component.status = await res.json();
+    });
+
+    it('renders correctly', () => {
+      expect(component.$('#text').innerText.trim()).to.eq('<script>alert(\'thing\');</script>');
+    });
+  });
+
   describe('relative timestamp', () => {
     describe('15 seconds ago', () => {
       beforeEach(async () => {

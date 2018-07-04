@@ -1,6 +1,6 @@
 import { html, Property, Seed, svg, TemplateResult } from '@nutmeg/seed';
 import { unsafeHTML } from 'lit-html/lib/unsafe-html';
-import { autoLink, AutoLinkOptions, htmlEscape, UrlEntity } from 'twitter-text';
+import { autoLink, AutoLinkOptions, UrlEntity } from 'twitter-text';
 import { Events, EVENT_NAME } from './events';
 import { Status, StatusData } from './status';
 import { User } from './user';
@@ -227,8 +227,8 @@ export class TwitterStatus extends Seed {
     } as AutoLinkOptions; // AutoLinkOptions doesn't know about rel at the root level.
   }
 
-  private get unsafeLinkedText() {
-    return unsafeHTML(autoLink(htmlEscape(this._status.text), this.autoLinkOptions));
+  private get linkedText() {
+    return unsafeHTML(autoLink(this._status.text, this.autoLinkOptions));
   }
 
   private get textClass(): string {
@@ -294,7 +294,7 @@ export class TwitterStatus extends Seed {
   private get textTemplate(): TemplateResult {
     return html`
       <div id="text" class$="${this.textClass}">
-        ${this.unsafeLinkedText}
+        ${this.linkedText}
       </div>
     `;
   }
