@@ -112,6 +112,23 @@ describe('<twitter-status>', () => {
     });
   });
 
+  describe('gif status', () => {
+    beforeEach(async () => {
+      component = fixture('<twitter-status></twitter-status>');
+      let res = await fetch('./base/test/gif.json');
+      component.status = await res.json();
+    });
+
+    it('renders an image', () => {
+      expect(component.$('#media video').getAttribute('src')).to.eq('https://video.twimg.com/tweet_video/DhXcLaqUwAIbVwp.mp4');
+    });
+
+    it('autoLinks hashtag', () => {
+      expect(component.$('#text').innerText.trim()).to
+        .eq('Just finished proofreading a 🔥 @Web_Components blog post by @pblatteier! Can\'t wait till the rest of you can enjoy it.');
+    });
+  });
+
   describe('retweet status', () => {
     beforeEach(async () => {
       component = fixture('<twitter-status></twitter-status>');

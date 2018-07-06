@@ -36,6 +36,8 @@
 
   <twitter-status id="script"></twitter-status>
 
+  <twitter-status id="gif"></twitter-status>
+
   <twitter-status id="retweet" class="card"></twitter-status>
 
   <script>
@@ -58,6 +60,11 @@
       .then(res => res.json())
       .then(status => {
         document.querySelector('#script').status = status;
+      });
+    fetch('test/gif.json')
+      .then(res => res.json())
+      .then(status => {
+        document.querySelector('#gif').status = status;
       });
     fetch('test/retweet.json')
       .then(res => res.json())
