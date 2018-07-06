@@ -38,39 +38,27 @@
 
   <twitter-status id="gif"></twitter-status>
 
+  <twitter-status id="quote"></twitter-status>
+
   <twitter-status id="retweet" class="card"></twitter-status>
 
   <script>
-    fetch('test/simple.json')
-      .then(res => res.json())
-      .then(status => {
-        document.querySelector('#simple').status = status;
-      });
-    fetch('test/complex.json')
-      .then(res => res.json())
-      .then(status => {
-        document.querySelector('#complex').status = status;
-      });
-    fetch('test/image.json')
-      .then(res => res.json())
-      .then(status => {
-        document.querySelector('#image').status = status;
-      });
-    fetch('test/script.json')
-      .then(res => res.json())
-      .then(status => {
-        document.querySelector('#script').status = status;
-      });
-    fetch('test/gif.json')
-      .then(res => res.json())
-      .then(status => {
-        document.querySelector('#gif').status = status;
-      });
-    fetch('test/retweet.json')
-      .then(res => res.json())
-      .then(status => {
-        document.querySelector('#retweet').status = status;
-      });
+    [
+      'simple',
+      'complex',
+      'image',
+      'script',
+      'gif',
+      'quote',
+      'retweet',
+    ].forEach((statusType) => {
+      // BUG: template literals currently don't work in html-webpack-plugin
+      // https://github.com/jantimon/html-webpack-plugin/issues/323#issuecomment-399914779
+      const element = document.querySelector('#' + statusType);
+      fetch('test/' + statusType + '.json')
+        .then(res => res.json())
+        .then(status => element.status = status);
+    });
   </script>
 
   <!-- In development `twitter-status.bundled.js` will automatically be loaded. -->

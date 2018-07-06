@@ -1,0 +1,287 @@
+{
+  "created_at": "Fri Jul 06 03:01:02 +0000 2018",
+  "id": 1015068072137379840,
+  "id_str": "1015068072137379840",
+  "full_text": "Thread. https://t.co/WIHEHWjy0S",
+  "truncated": false,
+  "display_text_range": [
+    0,
+    7
+  ],
+  "entities": {
+    "hashtags": [],
+    "symbols": [],
+    "user_mentions": [],
+    "urls": [
+      {
+        "url": "https://t.co/WIHEHWjy0S",
+        "expanded_url": "https://twitter.com/BlairBraverman/status/1015049038092046336",
+        "display_url": "twitter.com/BlairBraverman…",
+        "indices": [
+          8,
+          31
+        ]
+      }
+    ]
+  },
+  "source": "<a href=\"http://twitter.com\" rel=\"nofollow\">Twitter Web Client</a>",
+  "in_reply_to_status_id": null,
+  "in_reply_to_status_id_str": null,
+  "in_reply_to_user_id": null,
+  "in_reply_to_user_id_str": null,
+  "in_reply_to_screen_name": null,
+  "user": {
+    "id": 9436992,
+    "id_str": "9436992",
+    "name": "Abraham Williams",
+    "screen_name": "abraham",
+    "location": "Madison, WI",
+    "description": "Developer and caffeine consumer at @Bendyworks, #WebTechnologies @GoogleDevExpert, international speaker, @GDGMadison organizer, writer of code",
+    "url": "https://t.co/ck29y8mOBT",
+    "entities": {
+      "url": {
+        "urls": [
+          {
+            "url": "https://t.co/ck29y8mOBT",
+            "expanded_url": "https://abrah.am/",
+            "display_url": "abrah.am",
+            "indices": [
+              0,
+              23
+            ]
+          }
+        ]
+      },
+      "description": {
+        "urls": []
+      }
+    },
+    "protected": false,
+    "followers_count": 8521,
+    "friends_count": 557,
+    "listed_count": 583,
+    "created_at": "Sun Oct 14 12:50:47 +0000 2007",
+    "favourites_count": 20632,
+    "utc_offset": null,
+    "time_zone": null,
+    "geo_enabled": false,
+    "verified": false,
+    "statuses_count": 46546,
+    "lang": "en",
+    "contributors_enabled": false,
+    "is_translator": false,
+    "is_translation_enabled": false,
+    "profile_background_color": "FFFFFF",
+    "profile_background_image_url": "http://abs.twimg.com/images/themes/theme1/bg.png",
+    "profile_background_image_url_https": "https://abs.twimg.com/images/themes/theme1/bg.png",
+    "profile_background_tile": false,
+    "profile_image_url": "http://pbs.twimg.com/profile_images/897079141719195648/_mvh-QJH_normal.jpg",
+    "profile_image_url_https": "https://pbs.twimg.com/profile_images/897079141719195648/_mvh-QJH_normal.jpg",
+    "profile_banner_url": "https://pbs.twimg.com/profile_banners/9436992/1490189391",
+    "profile_link_color": "2196F3",
+    "profile_sidebar_border_color": "FFFFFF",
+    "profile_sidebar_fill_color": "FFFFFF",
+    "profile_text_color": "454545",
+    "profile_use_background_image": false,
+    "has_extended_profile": true,
+    "default_profile": false,
+    "default_profile_image": false,
+    "following": false,
+    "follow_request_sent": false,
+    "notifications": false,
+    "translator_type": "regular"
+  },
+  "geo": null,
+  "coordinates": null,
+  "place": null,
+  "contributors": null,
+  "is_quote_status": true,
+  "quoted_status_id": 1015049038092046336,
+  "quoted_status_id_str": "1015049038092046336",
+  "quoted_status_permalink": {
+    "url": "https://t.co/WIHEHWjy0S",
+    "expanded": "https://twitter.com/BlairBraverman/status/1015049038092046336",
+    "display": "twitter.com/BlairBraverman…"
+  },
+  "quoted_status": {
+    "created_at": "Fri Jul 06 01:45:24 +0000 2018",
+    "id": 1015049038092046336,
+    "id_str": "1015049038092046336",
+    "full_text": "Came home to some minor tornado wreckage, so I decided to recruit some of the pups for a clean-up party. https://t.co/FWWeM5icXR",
+    "truncated": false,
+    "display_text_range": [
+      0,
+      104
+    ],
+    "entities": {
+      "hashtags": [],
+      "symbols": [],
+      "user_mentions": [],
+      "urls": [],
+      "media": [
+        {
+          "id": 1015048956336791553,
+          "id_str": "1015048956336791553",
+          "indices": [
+            105,
+            128
+          ],
+          "media_url": "http://pbs.twimg.com/media/DhYtpdgV4AE8e-5.jpg",
+          "media_url_https": "https://pbs.twimg.com/media/DhYtpdgV4AE8e-5.jpg",
+          "url": "https://t.co/FWWeM5icXR",
+          "display_url": "pic.twitter.com/FWWeM5icXR",
+          "expanded_url": "https://twitter.com/BlairBraverman/status/1015049038092046336/photo/1",
+          "type": "photo",
+          "sizes": {
+            "large": {
+              "w": 1024,
+              "h": 768,
+              "resize": "fit"
+            },
+            "small": {
+              "w": 680,
+              "h": 510,
+              "resize": "fit"
+            },
+            "thumb": {
+              "w": 150,
+              "h": 150,
+              "resize": "crop"
+            },
+            "medium": {
+              "w": 1024,
+              "h": 768,
+              "resize": "fit"
+            }
+          }
+        }
+      ]
+    },
+    "extended_entities": {
+      "media": [
+        {
+          "id": 1015048956336791553,
+          "id_str": "1015048956336791553",
+          "indices": [
+            105,
+            128
+          ],
+          "media_url": "http://pbs.twimg.com/media/DhYtpdgV4AE8e-5.jpg",
+          "media_url_https": "https://pbs.twimg.com/media/DhYtpdgV4AE8e-5.jpg",
+          "url": "https://t.co/FWWeM5icXR",
+          "display_url": "pic.twitter.com/FWWeM5icXR",
+          "expanded_url": "https://twitter.com/BlairBraverman/status/1015049038092046336/photo/1",
+          "type": "photo",
+          "sizes": {
+            "large": {
+              "w": 1024,
+              "h": 768,
+              "resize": "fit"
+            },
+            "small": {
+              "w": 680,
+              "h": 510,
+              "resize": "fit"
+            },
+            "thumb": {
+              "w": 150,
+              "h": 150,
+              "resize": "crop"
+            },
+            "medium": {
+              "w": 1024,
+              "h": 768,
+              "resize": "fit"
+            }
+          }
+        }
+      ]
+    },
+    "source": "<a href=\"http://twitter.com/download/iphone\" rel=\"nofollow\">Twitter for iPhone</a>",
+    "in_reply_to_status_id": null,
+    "in_reply_to_status_id_str": null,
+    "in_reply_to_user_id": null,
+    "in_reply_to_user_id_str": null,
+    "in_reply_to_screen_name": null,
+    "user": {
+      "id": 2271638589,
+      "id_str": "2271638589",
+      "name": "Blair Braverman",
+      "screen_name": "BlairBraverman",
+      "location": "Mountain, Wisconsin",
+      "description": "Dogsled racer. Nonfiction writer. Outdoors 30 Under 30. If you like these tweets, you'll love WELCOME TO THE GODDAMN ICE CUBE (@eccobooks).",
+      "url": "https://t.co/fLySNcsj3J",
+      "entities": {
+        "url": {
+          "urls": [
+            {
+              "url": "https://t.co/fLySNcsj3J",
+              "expanded_url": "http://www.blairbraverman.com",
+              "display_url": "blairbraverman.com",
+              "indices": [
+                0,
+                23
+              ]
+            }
+          ]
+        },
+        "description": {
+          "urls": []
+        }
+      },
+      "protected": false,
+      "followers_count": 21391,
+      "friends_count": 1017,
+      "listed_count": 191,
+      "created_at": "Thu Jan 09 21:29:19 +0000 2014",
+      "favourites_count": 55650,
+      "utc_offset": null,
+      "time_zone": null,
+      "geo_enabled": true,
+      "verified": true,
+      "statuses_count": 32490,
+      "lang": "en",
+      "contributors_enabled": false,
+      "is_translator": false,
+      "is_translation_enabled": false,
+      "profile_background_color": "C0DEED",
+      "profile_background_image_url": "http://abs.twimg.com/images/themes/theme1/bg.png",
+      "profile_background_image_url_https": "https://abs.twimg.com/images/themes/theme1/bg.png",
+      "profile_background_tile": false,
+      "profile_image_url": "http://pbs.twimg.com/profile_images/965629252627550211/fC80e9zn_normal.jpg",
+      "profile_image_url_https": "https://pbs.twimg.com/profile_images/965629252627550211/fC80e9zn_normal.jpg",
+      "profile_banner_url": "https://pbs.twimg.com/profile_banners/2271638589/1463795235",
+      "profile_link_color": "1DA1F2",
+      "profile_sidebar_border_color": "C0DEED",
+      "profile_sidebar_fill_color": "DDEEF6",
+      "profile_text_color": "333333",
+      "profile_use_background_image": true,
+      "has_extended_profile": true,
+      "default_profile": true,
+      "default_profile_image": false,
+      "following": true,
+      "follow_request_sent": false,
+      "notifications": false,
+      "translator_type": "none"
+    },
+    "geo": null,
+    "coordinates": null,
+    "place": null,
+    "contributors": null,
+    "is_quote_status": false,
+    "retweet_count": 139,
+    "favorite_count": 716,
+    "favorited": true,
+    "retweeted": false,
+    "possibly_sensitive": false,
+    "possibly_sensitive_appealable": false,
+    "lang": "en"
+  },
+  "retweet_count": 0,
+  "favorite_count": 1,
+  "favorited": false,
+  "retweeted": false,
+  "possibly_sensitive": false,
+  "possibly_sensitive_appealable": false,
+  "lang": "en"
+}
