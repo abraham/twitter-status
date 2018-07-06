@@ -1,0 +1,208 @@
+{
+  "created_at": "Thu Jul 05 20:04:19 +0000 2018",
+  "id": 1014963204395499520,
+  "id_str": "1014963204395499520",
+  "full_text": "Just finished proofreading a 🔥 @Web_Components blog post by @pblatteier! Can't wait till the rest of you can enjoy it. https://t.co/xbCTk4DaE5",
+  "truncated": false,
+  "display_text_range": [
+    0,
+    118
+  ],
+  "entities": {
+    "hashtags": [],
+    "symbols": [],
+    "user_mentions": [
+      {
+        "screen_name": "Web_Components",
+        "name": "Web Components",
+        "id": 2477133162,
+        "id_str": "2477133162",
+        "indices": [
+          31,
+          46
+        ]
+      },
+      {
+        "screen_name": "pblatteier",
+        "name": "Pearl Latteier",
+        "id": 202376085,
+        "id_str": "202376085",
+        "indices": [
+          60,
+          71
+        ]
+      }
+    ],
+    "urls": [],
+    "media": [
+      {
+        "id": 1014959379735429122,
+        "id_str": "1014959379735429122",
+        "indices": [
+          119,
+          142
+        ],
+        "media_url": "http://pbs.twimg.com/tweet_video_thumb/DhXcLaqUwAIbVwp.jpg",
+        "media_url_https": "https://pbs.twimg.com/tweet_video_thumb/DhXcLaqUwAIbVwp.jpg",
+        "url": "https://t.co/xbCTk4DaE5",
+        "display_url": "pic.twitter.com/xbCTk4DaE5",
+        "expanded_url": "https://twitter.com/abraham/status/1014963204395499520/photo/1",
+        "type": "photo",
+        "sizes": {
+          "thumb": {
+            "w": 150,
+            "h": 150,
+            "resize": "crop"
+          },
+          "large": {
+            "w": 320,
+            "h": 220,
+            "resize": "fit"
+          },
+          "small": {
+            "w": 320,
+            "h": 220,
+            "resize": "fit"
+          },
+          "medium": {
+            "w": 320,
+            "h": 220,
+            "resize": "fit"
+          }
+        }
+      }
+    ]
+  },
+  "extended_entities": {
+    "media": [
+      {
+        "id": 1014959379735429122,
+        "id_str": "1014959379735429122",
+        "indices": [
+          119,
+          142
+        ],
+        "media_url": "http://pbs.twimg.com/tweet_video_thumb/DhXcLaqUwAIbVwp.jpg",
+        "media_url_https": "https://pbs.twimg.com/tweet_video_thumb/DhXcLaqUwAIbVwp.jpg",
+        "url": "https://t.co/xbCTk4DaE5",
+        "display_url": "pic.twitter.com/xbCTk4DaE5",
+        "expanded_url": "https://twitter.com/abraham/status/1014963204395499520/photo/1",
+        "type": "animated_gif",
+        "sizes": {
+          "thumb": {
+            "w": 150,
+            "h": 150,
+            "resize": "crop"
+          },
+          "large": {
+            "w": 320,
+            "h": 220,
+            "resize": "fit"
+          },
+          "small": {
+            "w": 320,
+            "h": 220,
+            "resize": "fit"
+          },
+          "medium": {
+            "w": 320,
+            "h": 220,
+            "resize": "fit"
+          }
+        },
+        "video_info": {
+          "aspect_ratio": [
+            16,
+            11
+          ],
+          "variants": [
+            {
+              "bitrate": 0,
+              "content_type": "video/mp4",
+              "url": "https://video.twimg.com/tweet_video/DhXcLaqUwAIbVwp.mp4"
+            }
+          ]
+        }
+      }
+    ]
+  },
+  "source": "<a href=\"http://twitter.com\" rel=\"nofollow\">Twitter Web Client</a>",
+  "in_reply_to_status_id": null,
+  "in_reply_to_status_id_str": null,
+  "in_reply_to_user_id": null,
+  "in_reply_to_user_id_str": null,
+  "in_reply_to_screen_name": null,
+  "user": {
+    "id": 9436992,
+    "id_str": "9436992",
+    "name": "Abraham Williams",
+    "screen_name": "abraham",
+    "location": "Madison, WI",
+    "description": "Developer and caffeine consumer at @Bendyworks, #WebTechnologies @GoogleDevExpert, international speaker, @GDGMadison organizer, writer of code",
+    "url": "https://t.co/ck29y8mOBT",
+    "entities": {
+      "url": {
+        "urls": [
+          {
+            "url": "https://t.co/ck29y8mOBT",
+            "expanded_url": "https://abrah.am/",
+            "display_url": "abrah.am",
+            "indices": [
+              0,
+              23
+            ]
+          }
+        ]
+      },
+      "description": {
+        "urls": []
+      }
+    },
+    "protected": false,
+    "followers_count": 8518,
+    "friends_count": 556,
+    "listed_count": 582,
+    "created_at": "Sun Oct 14 12:50:47 +0000 2007",
+    "favourites_count": 20589,
+    "utc_offset": null,
+    "time_zone": null,
+    "geo_enabled": false,
+    "verified": false,
+    "statuses_count": 46527,
+    "lang": "en",
+    "contributors_enabled": false,
+    "is_translator": false,
+    "is_translation_enabled": false,
+    "profile_background_color": "FFFFFF",
+    "profile_background_image_url": "http://abs.twimg.com/images/themes/theme1/bg.png",
+    "profile_background_image_url_https": "https://abs.twimg.com/images/themes/theme1/bg.png",
+    "profile_background_tile": false,
+    "profile_image_url": "http://pbs.twimg.com/profile_images/897079141719195648/_mvh-QJH_normal.jpg",
+    "profile_image_url_https": "https://pbs.twimg.com/profile_images/897079141719195648/_mvh-QJH_normal.jpg",
+    "profile_banner_url": "https://pbs.twimg.com/profile_banners/9436992/1490189391",
+    "profile_link_color": "2196F3",
+    "profile_sidebar_border_color": "FFFFFF",
+    "profile_sidebar_fill_color": "FFFFFF",
+    "profile_text_color": "454545",
+    "profile_use_background_image": false,
+    "has_extended_profile": true,
+    "default_profile": false,
+    "default_profile_image": false,
+    "following": false,
+    "follow_request_sent": false,
+    "notifications": false,
+    "translator_type": "regular"
+  },
+  "geo": null,
+  "coordinates": null,
+  "place": null,
+  "contributors": null,
+  "is_quote_status": false,
+  "retweet_count": 1,
+  "favorite_count": 2,
+  "favorited": false,
+  "retweeted": false,
+  "possibly_sensitive": false,
+  "possibly_sensitive_appealable": false,
+  "lang": "en"
+}

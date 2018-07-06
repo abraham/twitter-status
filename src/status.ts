@@ -1,10 +1,11 @@
-import { Entities } from './entities';
+import { Entities, ExtendedEntities, ExtendedMedia } from './entities';
 import { User, UserData } from './user';
 
 const MINUTE_SECONDS = 60;
 const HOUR_SECONDS = 3600;
 const DAY_SECONDS = 86400;
 const MONTHS = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+export const SUPPORTED_MEDIA = ['photo', 'animated_gif'];
 
 export class Status {
   public retweet?: Status;
@@ -35,16 +36,43 @@ export class Status {
     return `https://twitter.com/${this._user.screen_name}/status/${this._data.id_str}`;
   }
 
-  public get hasMedia(): boolean {
-    return this._data.entities.media && this._data.entities.media.length > 0
+  public get mediaType(): string {
+    return this.firstMedia ? this.firstMedia.type : 'none';
   }
 
   public get mediaUrl(): string {
-    return this._data.entities.media[0].media_url_https;
+    const media = this.firstMedia;
+    if (media && media.video_info) {
+      return media.video_info.variants[0].url;
+    } else if (media) {
+      return media.media_url_https;
+    } else {
+      return '';
+    }
+  }
+
+  public get fallbackMediaUrl(): string {
+    const media = this.firstMedia;
+    if (media) {
+      return media.media_url_https;
+    } else {
+      return '';
+    }
+  }
+
+  public get firstMedia(): ExtendedMedia | undefined {
+    if (this._data.extended_entities && this._data.extended_entities.media) {
+      return this._data.extended_entities.media.find(media => {
+        return SUPPORTED_MEDIA.includes(media.type);
+      });
+    } else {
+      return;
+    }
   }
 
   public get text(): string {
-    return this._data.full_text;
+    const media = this.firstMedia;
+    return media ? this._data.full_text.replace(media.url, '').trim() : this._data.full_text;
   }
 
   public get entities(): Entities {
@@ -105,6 +133,7 @@ export interface StatusData {
   created_at: string,
   display_text_range: number[],
   entities: Entities,
+  extended_entities?: ExtendedEntities,
   favorite_count: number,
   favorited: boolean,
   full_text: string,

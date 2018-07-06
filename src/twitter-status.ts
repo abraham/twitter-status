@@ -111,7 +111,7 @@ export class TwitterStatus extends Seed {
           line-height: 24px;
         }
 
-        #media img {
+        #media img, #media video {
           width: 100%;
           max-height: 400px;
           object-fit: cover;
@@ -256,12 +256,27 @@ export class TwitterStatus extends Seed {
   }
 
   private get mediaTemplate(): TemplateResult {
-    if (!this._status.hasMedia) { return html``; }
-    return html`
-      <div id="media">
-        <img src="${this._status.mediaUrl}" alt="media embeded in tweet" />
-      </div>
-    `;
+    if (this._status.mediaType === 'photo') {
+      return html`
+        <div id="media">
+          <img src="${this._status.mediaUrl}" alt="media embeded in tweet" />
+        </div>
+      `;
+    } else if (this._status.mediaType === 'animated_gif') {
+      return html`
+        <div id="media">
+          <video autoplay repeat
+            muted
+            loop
+            poster="${this._status.fallbackMediaUrl}"
+            src="${this._status.mediaUrl}">
+            <img src="${this._status.fallbackMediaUrl}" alt="media embeded in tweet" />
+          </video>
+        </div>
+      `;
+    } else {
+      return html``;
+    }
   }
 
   private get headerTemplate(): TemplateResult {

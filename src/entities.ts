@@ -9,6 +9,18 @@ export interface Entities {
   user_mentions: Mention[],
 }
 
+export interface ExtendedEntities {
+  description?: {
+    urls: Url[]
+  },
+  hashtags?: Hashtag[],
+  media?: ExtendedMedia[],
+  symbols: Symbol[],
+  urls?: Url[],
+  user_mentions?: Mention[],
+}
+
+
 export interface Hashtag {
   indices: number[],
   text: string,
@@ -45,6 +57,19 @@ export interface Media {
     }
   },
   type: string,
+  url: string,
+}
+
+export interface ExtendedMedia extends Media {
+  video_info: {
+    aspect_ratio: [number, number],
+    variants: VideoVariant[],
+  }
+}
+
+export interface VideoVariant {
+  bitrate: number,
+  content_type: string,
   url: string,
 }
 
