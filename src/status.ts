@@ -12,10 +12,10 @@ export class Status {
   private _user: User;
 
   constructor(parent: StatusData) {
-    let status = { ...parent };
+    let status = Object.assign({}, parent);
     if (status.retweeted_status) {
       let retweet = status;
-      status = { ...status.retweeted_status };
+      status = Object.assign({}, status.retweeted_status);
       delete retweet.retweeted_status;
       this.retweet = new Status(retweet);
     }
