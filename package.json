@@ -46,6 +46,6 @@
     "@nutmeg/cli": "0.15.0",
     "@types/twitter-text": "2.0.0",
     "moment": "2.22.2",
-    "twitter-d": "0.1.0"
+    "twitter-d": "0.1.1"
   }
 }
