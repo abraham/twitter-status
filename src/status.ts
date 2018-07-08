@@ -1,5 +1,5 @@
-import { Entities, ExtendedEntities, ExtendedMedia } from './entities';
-import { User, UserData } from './user';
+import { Entities as EntitiesData, MediaEntity as MediaEntityData, Status as StatusData } from 'twitter-d';
+import { User } from './user';
 
 const MINUTE_SECONDS = 60;
 const HOUR_SECONDS = 3600;
@@ -42,7 +42,7 @@ export class Status {
 
   public get mediaUrl(): string {
     const media = this.firstMedia;
-    if (media && media.video_info) {
+    if (media && media.video_info && media.video_info.variants) {
       return media.video_info.variants[0].url;
     } else if (media) {
       return media.media_url_https;
@@ -60,7 +60,7 @@ export class Status {
     }
   }
 
-  public get firstMedia(): ExtendedMedia | undefined {
+  public get firstMedia(): MediaEntityData | undefined {
     if (this._data.extended_entities && this._data.extended_entities.media) {
       return this._data.extended_entities.media.find(media => {
         return SUPPORTED_MEDIA.includes(media.type);
@@ -75,7 +75,7 @@ export class Status {
     return media ? this._data.full_text.replace(media.url, '').trim() : this._data.full_text;
   }
 
-  public get entities(): Entities {
+  public get entities(): EntitiesData {
     return this._data.entities;
   }
 
@@ -125,35 +125,4 @@ export class Status {
     }
     return `${Math.round(delta / DAY_SECONDS)}d`;
   }
-}
-
-export interface StatusData {
-  contributors: null,
-  coordinates: null,
-  created_at: string,
-  display_text_range: number[],
-  entities: Entities,
-  extended_entities?: ExtendedEntities,
-  favorite_count: number,
-  favorited: boolean,
-  full_text: string,
-  geo: null,
-  id_str: string,
-  id: number,
-  in_reply_to_screen_name: string | null,
-  in_reply_to_status_id_str: string | null,
-  in_reply_to_status_id: number | null,
-  in_reply_to_user_id_str: string | null,
-  in_reply_to_user_id: number | null,
-  is_quote_status: boolean,
-  lang: string,
-  place: null,
-  possibly_sensitive_appealable: boolean,
-  possibly_sensitive: boolean,
-  retweet_count: number,
-  retweeted: boolean,
-  source: string,
-  truncated: boolean,
-  user: UserData,
-  retweeted_status?: StatusData;
 }

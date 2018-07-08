@@ -2,13 +2,13 @@ import { html, Property, Seed, svg, TemplateResult } from '@nutmeg/seed';
 import { unsafeHTML } from 'lit-html/lib/unsafe-html';
 import { autoLink, AutoLinkOptions, UrlEntity } from 'twitter-text';
 import { Events, EVENT_NAME } from './events';
-import { Status, StatusData } from './status';
+import { Status } from './status';
 import { User } from './user';
 
 const eventTarget = new Events().target;
 
 export class TwitterStatus extends Seed {
-  @Property() public status!: StatusData;
+  @Property() public status!: import('twitter-d').Status;
 
   constructor() {
     super();
