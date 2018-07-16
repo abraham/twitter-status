@@ -29,32 +29,63 @@ Example with hyperlinked hashtags/mentions/URLs and links colored from profile s
 Install
 ----
 
-Polyfill tags if you need them. This will include ShadowDOM and Custom Elements support.
+Load directly from unpkg:
 
-```
-<script src="https://unpkg.com/@webcomponents/webcomponentsjs@latest/bundles/webcomponents-sd-ce.js"></script>
+```html
+<script async src="https://unpkg.com/twitter-status@latest/dist/twitter-status.min.js"></script>
 ```
 
-Loading this component. It would be a good idea to use a specific version instead of `latest`.
+Or installed as a dependency:
 
+```sh
+npm install twitter-status
 ```
-<script src="https://unpkg.com/twitter-status@latest/dist/twitter-status.min.js"></script>
+
+And imported:
+
+```js
+import 'twitter-status';
+```
+
+Polyfill
+----
+
+twitter-status relies on the [shadow DOM](https://developer.mozilla.org/en-US/docs/Web/Web_Components/Using_shadow_DOM) and [custom elements](https://developer.mozilla.org/en-US/docs/Web/Web_Components/Using_custom_elements) standards. You will likely need a [polyfill](https://github.com/webcomponents/webcomponentsjs) until browser support is more ubiquitous.
+
+Polyfills can be loaded via unpkg directly.
+```html
+<script src="https://unpkg.com/@webcomponents/webcomponentsjs@2/bundles/webcomponents-sd-ce.js"></script>
+```
+
+Or installed as a dependency:
+
+```sh
+npm install @webcomponents/webcomponentsjs
+```
+
+And imported:
+
+```js
+import '@webcomponents/webcomponentsjs/bundles/webcomponents-sd-ce';
 ```
 
 Usage
 ----
 
-Status must be the full response of [GET statuses/show/:id](https://developer.twitter.com/en/docs/tweets/post-and-engage/api-reference/get-statuses-show-id) with `include_entities=true` and `tweet_mode=extended`.
+twiter-status takes a single value `status` that must be the full response of [GET statuses/show/:id](https://developer.twitter.com/en/docs/tweets/post-and-engage/api-reference/get-statuses-show-id) with the parameters `include_entities=true` and `tweet_mode=extended`.
 
-```
-<twitter-status></twitter-status>
-
+You can embed the tweet in the HTML as a JSON string:
+```html
 <twitter-status status="{\"id_str\":\"20\",...}"></twitter-status>
 ```
 
-```
-document.querySelector('twitter-status').status = { "id_str": "20", ... };
+Or set the property in JS:
+```html
+<twitter-status></twitter-status>
 
+<script>
+  document.querySelector('twitter-status').status = { "id_str": "20", ... };
+</script>
 ```
 
 Theme
@@ -62,7 +93,7 @@ Theme
 
 You can theme the borders. Here is an card example.
 
-```
+```html
 <style>
   twitter-status.card {
     box-shadow: 0 3px 4px 1px rgba(0, 0, 0, .08), 0 1px 1px 1px rgba(0, 0, 0, .05);
@@ -81,7 +112,7 @@ You can theme the borders. Here is an card example.
 
 Looking for a way to embed users? Check out [&lt;twitter-user&gt;](https://github.com/abraham/twitter-user).
 
-License
+Notes
 ----
 
 TwitterStatus is released under an MIT license.
