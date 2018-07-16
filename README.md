@@ -57,9 +57,6 @@ document.querySelector('twitter-status').status = { "id_str": "20", ... };
 
 ```
 
-&lt;twitter-user&gt;
-----
-
 Theme
 ----
 
@@ -78,6 +75,9 @@ You can theme the borders. Here is an card example.
 
 ![Example with card edges](/images/card.png)
 
+
+&lt;twitter-user&gt;
+----
 
 Looking for a way to embed users? Check out [&lt;twitter-user&gt;](https://github.com/abraham/twitter-user).
 
