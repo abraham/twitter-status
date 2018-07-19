@@ -72,7 +72,7 @@ import '@webcomponents/webcomponentsjs/bundles/webcomponents-sd-ce';
 Usage
 ----
 
-twiter-status takes a single value `status` that must be the full response of [GET statuses/show/:id](https://developer.twitter.com/en/docs/tweets/post-and-engage/api-reference/get-statuses-show-id) with the parameters `include_entities=true` and `tweet_mode=extended`.
+&lt;twitter-status&gt; takes a single value `status` that must be the full response of [GET statuses/show/:id](https://developer.twitter.com/en/docs/tweets/post-and-engage/api-reference/get-statuses-show-id) with the parameters `include_entities=true` and `tweet_mode=extended`.
 
 You can embed the tweet in the HTML as a JSON string:
 ```html
@@ -106,6 +106,36 @@ You can theme the borders. Here is an card example.
 
 ![Example with card edges](/images/card.png)
 
+Reasons
+----
+
+**Why use &lt;twitter-status&gt; instead of Twitter's embedded tweets?**
+
+- Open source - If you don't like something about it you can customize it to fit your exact needs.
+- Lightweight
+  - A minimal &lt;twitter-status&gt; [example](https://twitter-e9454.firebaseapp.com/twitter-status) comes in at **33KB** before compression. ([With more to save](https://github.com/abraham/twitter-status/issues/79))
+  - A minimal [Twitter Embed](https://developer.twitter.com/en/docs/twitter-for-websites/embedded-tweets/overview.html) [example](https://twitter-e9454.firebaseapp.com/oembed) comes in at **121KB** before compression.
+- Security - You can perform a security audit of &lt;twitter-status&gt; and know exactly what you are shipping. You don't have to worry about loading Twitter's JavaScript.
+- Privacy - &lt;twitter-status&gt; only loads embedded images and videos from Twitter's CDN. You don't have to worry about loading Twitter's JavaScript.
+- Native web component - &lt;twitter-status&gt; is built with standardized web APIs that will work out of the box with [most frameworks](https://custom-elements-everywhere.com/).
+- No framework dependancies - Because it's based on native web components, it does not have a dependency on Angular, React, or any other framework.
+- Custom URL handling ([coming soon](https://github.com/abraham/twitter-status/issues/48)) - When a user click on a #hashtag, @mention, etc, you can configure it that they stay within your site.
+- Cached data - If you are a news organization or displaying tweets from politicians, you can continue displaying deleted tweets.
+- Well tested - &lt;twitter-status&gt; as a nice suit of tests to make sure everything continues to render correctly.
+
+**Limitations of &lt;twitter-status&gt;?**
+
+- Web component polyfills - Shadow DOM and custom elements are [not supported in all browsers](https://developer.mozilla.org/en-US/docs/Web/Web_Components#Browser_support), if you are not already using web components the pollyfills may add additional data cost.
+- Twitter cards - Twitter fetches data about links and embeds those in tweets. The data is not available via the API so &lt;twitter-status&gt; does not have access.
+- Status object - &lt;twitter-status&gt; requires the full tweet object. If you only have an ID you'll have to make a request to the Twitter API before using the component.
+- Activity counts - Because the status objects may be stale, like, retweet, and reply counts are not displayed.
+- Open source - This project is not backed by any financing so work gets done as time permits. There are [known status types](https://github.com/abraham/twitter-status/issues) that are not supported yet.
+
+**What other options are there?**
+
+- [Twitter's official embedded tweets](https://developer.twitter.com/en/docs/twitter-for-websites/embedded-tweets/overview.html)
+- [react-tweet-embed](https://github.com/capaj/react-tweet-embed)
+- [react-tweet](https://github.com/mannynotfound/react-tweet)
 
 &lt;twitter-user&gt;
 ----
