@@ -40,12 +40,12 @@
   "dependencies": {
     "@nutmeg/seed": "0.13.0",
     "lit-html": "0.10.2",
+    "twitter-d": "0.1.1",
     "twitter-text": "2.0.4"
   },
   "devDependencies": {
     "@nutmeg/cli": "0.15.0",
     "@types/twitter-text": "2.0.0",
-    "moment": "2.22.2",
-    "twitter-d": "0.1.1"
+    "moment": "2.22.2"
   }
 }
