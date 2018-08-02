@@ -6,6 +6,7 @@
 [![Linux Build Status](https://img.shields.io/travis/abraham/twitter-status.svg?style=flat&label=linux)](https://travis-ci.org/abraham/twitter-status)
 [![Windows Build Status](https://img.shields.io/appveyor/ci/abraham/twitter-status.svg?style=flat&label=windows)](https://ci.appveyor.com/project/abraham/twitter-status)
 [![Dependency Status](https://david-dm.org/abraham/twitter-status.svg?style=flat)](https://david-dm.org/abraham/twitter-status)
+[![npm bundle size (minified + gzip)](https://img.shields.io/bundlephobia/minzip/twitter-status.svg?style=flat&colorB=4bc524)](https://bundlephobia.com/result?p=twitter-status)
 
 Twitter Status Web Component
 
