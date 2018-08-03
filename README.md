@@ -110,7 +110,7 @@ You can theme the borders. Here is an card example.
 Reasons
 ----
 
-**Why use &lt;twitter-status&gt; instead of Twitter's embedded tweets?**
+### Why use &lt;twitter-status&gt; instead of Twitter's embedded tweets?
 
 - Open source - If you don't like something about it you can customize it to fit your exact needs.
 - Lightweight
@@ -124,7 +124,7 @@ Reasons
 - Cached data - If you are a news organization or displaying tweets from politicians, you can continue displaying deleted tweets.
 - Well tested - &lt;twitter-status&gt; as a nice suit of tests to make sure everything continues to render correctly.
 
-**Limitations of &lt;twitter-status&gt;?**
+### Limitations of &lt;twitter-status&gt;
 
 - Web component polyfills - Shadow DOM and custom elements are [not supported in all browsers](https://developer.mozilla.org/en-US/docs/Web/Web_Components#Browser_support), if you are not already using web components the pollyfills may add additional data cost.
 - Twitter cards - Twitter fetches data about links and embeds those in tweets. The data is not available via the API so &lt;twitter-status&gt; does not have access.
@@ -132,11 +132,13 @@ Reasons
 - Activity counts - Because the status objects may be stale, like, retweet, and reply counts are not displayed.
 - Open source - This project is not backed by any financing so work gets done as time permits. There are [known status types](https://github.com/abraham/twitter-status/issues) that are not supported yet.
 
-**What other options are there?**
+### What other options are there?
 
 - [Twitter's official embedded tweets](https://developer.twitter.com/en/docs/twitter-for-websites/embedded-tweets/overview.html)
 - [react-tweet-embed](https://github.com/capaj/react-tweet-embed)
 - [react-tweet](https://github.com/mannynotfound/react-tweet)
+- [react-twitter-widgets](https://github.com/andrewsuzuki/react-twitter-widgets) - various Twitter widgets (timeline, share etc.) including `Tweet`
+- [react-twitter-embed](https://github.com/saurabhnemade/react-twitter-embed) - various widgets, including status embed
 
 &lt;twitter-user&gt;
 ----
