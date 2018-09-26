@@ -41,7 +41,7 @@
     "@nutmeg/seed": "0.13.0",
     "lit-html": "0.10.2",
     "twitter-d": "0.2.1",
-    "twitter-text": "2.0.4"
+    "twitter-text": "2.0.5"
   },
   "devDependencies": {
     "@nutmeg/cli": "0.15.0",
