@@ -46,6 +46,6 @@
   "devDependencies": {
     "@nutmeg/cli": "0.15.0",
     "@types/twitter-text": "2.0.0",
-    "moment": "2.22.2"
+    "moment": "2.23.0"
   }
 }
