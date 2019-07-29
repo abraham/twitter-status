@@ -39,7 +39,7 @@
   },
   "dependencies": {
     "@nutmeg/seed": "0.13.0",
-    "lit-html": "0.10.2",
+    "lit-html": "0.14.0",
     "twitter-d": "0.4.0",
     "twitter-text": "3.0.0"
   },
