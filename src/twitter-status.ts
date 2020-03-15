@@ -198,16 +198,11 @@ export class TwitterStatus extends Seed {
 
   /** HTML Template for the component. */
   public get template(): TemplateResult {
-    this.setLinkColor();
     return html`
       <div id="container">
         ${this._status ? this.statusTemplate : this.loadingTemplate}
       </div>
     `;
-  }
-
-  private setLinkColor() {
-    this.style.setProperty('--twitter-status-link-color', this._user ? this._user.primaryColor : '#1c94e0');
   }
 
   private get timestamp(): string {
