@@ -5,14 +5,14 @@ import { Events, EVENT_NAME } from './events';
 import { Status } from './status';
 import { User } from './user';
 
-const eventTarget = new Events().target;
-
 export class TwitterStatus extends Seed {
-  @property() public status!: import('twitter-d').Status;
+  @property({ type: Object }) public status!: import('twitter-d').Status;
+  @property({ type: Boolean }) public updateTimestamp = false;
+
+  private eventTarget = Events.target;
 
   constructor() {
     super();
-    eventTarget.addEventListener(EVENT_NAME, () => this.render());
   }
 
   private get _user(): User {
@@ -30,6 +30,10 @@ export class TwitterStatus extends Seed {
   /** The component instance has been inserted into the DOM. */
   public connectedCallback() {
     super.connectedCallback();
+    if (this.updateTimestamp) {
+      this.eventTarget.addEventListener(EVENT_NAME, () => this.render());
+      Events.start();
+    }
   }
 
   /** The component instance has been removed from the DOM. */

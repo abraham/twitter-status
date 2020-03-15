@@ -14,6 +14,10 @@ describe('<twitter-status>', () => {
     it('renders default', () => {
       expect(component.$('#content').innerText).to.include('Loading...');
     });
+
+    it('does not update timestamps', () => {
+      expect(component.updateTimestamp).to.eq(false);
+    });
   });
 
   describe('simple status', () => {
@@ -52,7 +56,7 @@ describe('<twitter-status>', () => {
     });
 
     it('renders profile image', () => {
-      expect(component.$('#profile-image img').getAttribute('src')).to.include('https://pbs.twimg.com/profile_images/839863609345794048/mkpdB9Tf_normal.jpg');
+      expect(component.$('#profile-image img').getAttribute('src')).to.include('https://pbs.twimg.com/profile_images/1115644092329758721/AFjOr-K8_normal.jpg');
     });
 
     it('has action links', () => {
@@ -157,7 +161,7 @@ describe('<twitter-status>', () => {
   describe('relative timestamp', () => {
     describe('15 seconds ago', () => {
       beforeEach(async () => {
-        component = fixture('<twitter-status></twitter-status>');
+        component = fixture('<twitter-status update-timestamp></twitter-status>');
         let res = await fetch('./base/test/simple.json');
         let status = await res.json();
         component.status = { ...status, created_at: formatDate(Date.now() - 15 * 1000) };
@@ -165,6 +169,10 @@ describe('<twitter-status>', () => {
 
       it('renders date', () => {
         expect(['15s', '16s'].includes(component.$('#link').innerText)).to.be.true;
+      });
+
+      it('enables updating timestamps', () => {
+        expect(component.updateTimestamp).to.eq(true);
       });
     });
 
