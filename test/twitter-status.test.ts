@@ -43,12 +43,12 @@ describe('<twitter-status>', () => {
       expect(component.$('#link').innerText).to.eq('21 Mar 2006');
     });
 
-    it('renders links with user color', () => {
-      expect(getComputedStyle(component.$('#link a')).color).to.eq('rgb(153, 0, 0)');
+    it('renders links with Twitter color', () => {
+      expect(getComputedStyle(component.$('#link a')).color).to.eq('rgb(28, 148, 224)');
     });
 
-    it('renders border with user color', () => {
-      expect(getComputedStyle(component).borderColor).to.eq('rgb(153, 0, 0)');
+    it('renders border with Twitter color', () => {
+      expect(getComputedStyle(component).borderColor).to.eq('rgb(28, 148, 224)');
     });
 
     it('renders profile image', () => {
