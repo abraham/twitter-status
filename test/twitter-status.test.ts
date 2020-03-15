@@ -1,10 +1,10 @@
-import 'mocha';
 import { expect } from 'chai';
-import * as sinon from 'sinon';
+import 'mocha';
 import * as moment from 'moment';
+import { TwitterStatus } from '../src/twitter-status';
 
 describe('<twitter-status>', () => {
-  let component;
+  let component: TwitterStatus;
 
   describe('without properties', () => {
     beforeEach(() => {
@@ -215,7 +215,7 @@ function formatDate(date: number) {
   return moment(date).format('dd MMM DD HH:mm:ss ZZ YYYY');
 }
 
-function fixture(tag: string): HTMLElement {
+function fixture(tag: string): TwitterStatus {
   function fixtureContainer(): HTMLElement {
     let div = document.createElement('div');
     div.classList.add('fixture');
@@ -223,5 +223,5 @@ function fixture(tag: string): HTMLElement {
   }
   let fixture = document.body.querySelector('.fixture') || document.body.appendChild(fixtureContainer());
   fixture.innerHTML = tag;
-  return fixture.children[0] as HTMLElement;
+  return fixture.children[0] as TwitterStatus;
 }
