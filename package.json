@@ -1,6 +1,6 @@
 {
   "name": "twitter-status",
-  "version": "0.4.1",
+  "version": "0.5.0",
   "description": "Twitter Status Web Component",
   "main": "dist/twitter-status.js",
   "module": "dist/twitter-status.js",
