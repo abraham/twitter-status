@@ -1,6 +1,7 @@
 import { html, property, Seed, svg, TemplateResult } from '@nutmeg/seed';
 import { unsafeHTML } from 'lit-html/directives/unsafe-html';
-import { autoLink, AutoLinkOptions, UrlEntity } from 'twitter-text';
+import autoLink from 'twitter-text/dist/esm/autoLink';
+import { AutoLinkOptions, UrlEntity } from 'twitter-text';
 import { Events, EVENT_NAME } from './events';
 import { Status } from './status';
 import { User } from './user';
