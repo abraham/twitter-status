@@ -1,7 +1,6 @@
 import { html, property, Seed, svg, TemplateResult } from '@nutmeg/seed';
+import Autolinker, { AutolinkerConfig } from 'autolinker';
 import { unsafeHTML } from 'lit-html/directives/unsafe-html';
-import autoLink from 'twitter-text/dist/esm/autoLink';
-import { AutoLinkOptions, UrlEntity } from 'twitter-text';
 import { Events, EVENT_NAME } from './events';
 import { Status } from './status';
 import { User } from './user';
@@ -218,17 +217,13 @@ export class TwitterStatus extends Seed {
     return this._user.verified ? this.verifiedIcon : '';
   }
 
-  private get autoLinkOptions(): AutoLinkOptions {
-    return {
-      targetBlank: true,
-      urlEntities: this._status.entities.urls as UrlEntity[],
-      suppressNoFollow: true,
-      rel: 'noopener',
-    } as AutoLinkOptions; // AutoLinkOptions doesn't know about rel at the root level.
+  private get autoLinkOptions(): AutolinkerConfig {
+    // TODO: Implement display text for t.co URLs.
+    return {};
   }
 
   private get linkedText() {
-    return unsafeHTML(autoLink(this._status.text, this.autoLinkOptions));
+    return unsafeHTML(Autolinker.link(this._status.text, this.autoLinkOptions));
   }
 
   private get textClass(): string {

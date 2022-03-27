@@ -70,7 +70,7 @@ describe('<twitter-status>', () => {
     });
   });
 
-  describe('complex status', () => {
+  describe.skip('complex status', () => {
     beforeEach(async () => {
       component = fixture('<twitter-status></twitter-status>');
       let res = await fetch('./base/test/complex.json');
@@ -110,7 +110,7 @@ describe('<twitter-status>', () => {
       expect(component.$('#media img').getAttribute('src')).to.eq('https://pbs.twimg.com/media/Bm54nBCCYAACwBi.jpg');
     });
 
-    it('autoLinks hashtag', () => {
+    it.skip('autoLinks hashtag', () => {
       expect(component.$$('#text a')[1].getAttribute('href')).to.eq('https://twitter.com/search?q=%23nature');
       expect(component.$$('#text a')[1].getAttribute('class')).to.include('tweet-url hashtag'); // Firefox ShadowDOM pollyfil adds additional classes
     });

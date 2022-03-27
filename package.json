@@ -39,13 +39,12 @@
   },
   "dependencies": {
     "@nutmeg/seed": "0.17.0",
+    "autolinker": "^3.0.0",
     "lit-html": "1.1.2",
-    "twitter-d": "0.6.0",
-    "twitter-text": "3.1.0"
+    "twitter-d": "0.6.0"
   },
   "devDependencies": {
     "@nutmeg/cli": "0.17.0",
-    "@types/twitter-text": "3.1.1",
     "moment": "2.29.1"
   }
 }
