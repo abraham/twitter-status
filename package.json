@@ -40,7 +40,7 @@
   "dependencies": {
     "@nutmeg/seed": "0.17.0",
     "autolinker": "^3.0.0",
-    "lit-html": "1.1.2",
+    "lit-html": "2.3.0",
     "twitter-d": "0.6.0"
   },
   "devDependencies": {
