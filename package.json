@@ -44,7 +44,7 @@
     "twitter-d": "0.6.0"
   },
   "devDependencies": {
-    "@nutmeg/cli": "0.17.0",
+    "@nutmeg/cli": "0.17.2",
     "moment": "2.29.4"
   }
 }
